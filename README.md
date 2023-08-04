@@ -1,6 +1,4 @@
-##### README.md
-# https://lz3ral.github.io/
-name: PHP Composer
+# https://lz3ral.github.io
 
 on:
   push:
