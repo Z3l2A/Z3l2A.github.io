@@ -1,4 +1,4 @@
-##### https://lz3ral.github.io/
+##### lz3ral
 
 on:
   push:
