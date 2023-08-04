@@ -1,1 +1,1 @@
-# https://lz3ral.github.io/
+# lz3ral.github.io #
