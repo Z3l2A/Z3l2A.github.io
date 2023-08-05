@@ -1,3 +1,1 @@
-##### lz3ral
-
-permissions: *
+# lZ3RAl.github.io
