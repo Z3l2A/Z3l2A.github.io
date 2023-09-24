@@ -1,5 +1,3 @@
-# LICENSE.md
-
 Copyright (c) 2023 lZ3RAl.github.io @lZ3RAl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
