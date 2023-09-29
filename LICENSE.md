@@ -1,4 +1,4 @@
-# LICENSE
+# MIT LICENSE
 
 Copyright (c) 2023 https://lZ3RAl.github.io https://github.com/lZ3RAl @lZ3RAl
 
