@@ -1,8 +1,21 @@
-<HTML>
-https://lZ3RAl.github.io
-https://github.com/apps/lZ3RAl
-https://github.com/lZ3RAl/lZ3RAl.github.io
-https://dev.azure.com/Ashadyllia/0/_boards/board/t/0%20Team/Issues?goToKanbanBoard=true&preCreate=true&key=useWellKnownStrongBoxLocation&acquisitionId=5f52bf0d-2789-4ef3-8b65-30432c3873f8
-https://dev.azure.com/Ashadyllia/0/_boards/board/t/0%20Team/Issues?goToKanbanBoard=true&preCreate=true&key=useWellKnownStrongBoxLocation&acquisitionId=b149d2ec-476c-4b55-a8ce-f218ab19460f
-</HTML>
+# MIT LICENSE
 
+Copyright (c) 2023 https://lZ3RAl.github.io https://github.com/lZ3RAl lZ3RAl
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
