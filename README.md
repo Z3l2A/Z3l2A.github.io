@@ -1,6 +1,6 @@
 # MIT LICENSE
 
-Copyright (c) 2023 https://lZ3RAl.github.io https://github.com/lZ3RAl lZ3RAl
+Copyright (c) 2023 https://Z3l2A.github.io https://github.com/Z3l2A @Z3l2A
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
