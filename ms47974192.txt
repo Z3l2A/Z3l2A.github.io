@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Überprüfungsdatei für Domänen-Eigentümerschaft für Microsoft 365-Position im Website-Root",
+  "Domain": "Z3l2A.github.io",
+  "Id": "b23e6197-f76b-4b6b-a5b3-b0628dd9e476"
+}
