@@ -1,9 +1,0 @@
-﻿CNAME-Einträge
-Hostname,Verweist auf die Adresse oder den Wert,TTL 
-sip.Z3l2A,sipdir.online.lync.com,3600
-lyncdiscover.Z3l2A,webdir.online.lync.com,3600
-
-SRV-Einträge
-Dienst,Protokoll,Port,Gewichtung,Priorität,TTL ,Name,Ziel
-_sip,_tls,443,1,100,3600,Z3l2A,sipdir.online.lync.com
-_sipfederationtls,_tcp,5061,1,100,3600,Z3l2A,sipfed.online.lync.com
