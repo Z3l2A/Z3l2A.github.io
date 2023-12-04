@@ -3,7 +3,7 @@
 version: 2
 enable-beta-ecosystems: true
 updates:
-  - package-ecosystem: "beta-ecosystem"
+  - package-ecosystem: "*"
     directory: "/"
     schedule:
       interval: "weekly"
