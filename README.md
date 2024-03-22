@@ -1,1 +1,26 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+height: 100% !important;
+width: 100% !important;
+border: 0px !important;
+padding: 0px !important;
+margin: 0px  !important;
+pointer-events: all !important;
+background-color: #000000FF !important;
+accent-color: #FF00FFFF !important;
+visibility: visible !important;
+color-rendering: optimizeQuality !important;
+}
+</style>
+</head>
+<body>
+<div contenteditable="true" class="editable">
+***
+***
+***
+</div>
+<iframe src="https://sl.bing.net/hYPLUL9hZIa"></iframe>
+</html>
