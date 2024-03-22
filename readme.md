@@ -22,5 +22,5 @@ color-rendering: optimizeQuality !important;
 ***
 ***
 </div>
-<iframe src="https://sl.bing.net/hYPLUL9hZIa"></iframe>
+<iframe ("https://sl.bing.net/hYPLUL9hZIa")[url]"></iframe>
 </html>
