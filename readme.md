@@ -1,4 +1,3 @@
-![ashadyllia@Z3l2A io](https://github.com/Z3l2A/Z3l2A.github.io/assets/115247664/886df134-bde2-49ee-9bc9-9162fb280f41)
 <!DOCTYPE html>
 <html>
 <head>
