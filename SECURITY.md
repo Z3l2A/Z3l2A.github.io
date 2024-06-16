@@ -11,4 +11,4 @@
 
 ## Reporting a Vulnerability
 
-@Z3l2A
+0@Z3l2A.de
