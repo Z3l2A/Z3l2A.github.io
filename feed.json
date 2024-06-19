@@ -1,0 +1,28 @@
+feed:
+  version: "1.0"
+  title: "Customized Knowledge Library"
+  home_page_url: "https://z3l2a.de/"
+  feed_url: "http://example.com/feed.json"
+  description: "This feed provides a structured knowledge library for a customized Copilot."
+  user_comment: "This feed is intended for a customized Copilot to enhance its knowledge base."
+  next_url: "http://example.com/feed/next"
+  icon: "http://example.com/icon.png"
+  favicon: "http://example.com/favicon.ico"
+  author:
+    name: "Your Name"
+    url: "http://example.com/author"
+  items:
+    - id: "unique-id-1"
+      title: "Knowledge Item 1"
+      content_text: "Description of the first knowledge item."
+      url: "http://example.com/item1"
+      external_url: "http://external.com/item1"
+      date_published: "2024-06-19T08:40:08+00:00"
+      date_modified: "2024-06-19T08:40:08+00:00"
+      author:
+        name: "Author Name"
+        url: "http://example.com/author"
+      tags:
+        - "Tag1"
+        - "Tag2"
+    # Add more items as needed
