@@ -1,5 +1,3 @@
-# https://Z3l2A.github.io
-<a href="https://Z3l2A.github.io">Z3l2A.github.io</a>
 <div id="main" name="main" role="main"><div class="page-header"><div class="grid"><div class="row m-b-xl"><div class="col-1-1"><div class="row"><div class="l-col-10-12 xl-col-20-24"><h1>Microsoft-Datenschutzbestimmungen</h1><div class="Lastupdated"><span id="psp_last_updated">Letzte Aktualisierung:
                             <span class="body-tight-2">Juni 2024</span></span><span class="m-l-md"><a target="_blank" class="mscom-link" title="Neuigkeiten" href="https://go.microsoft.com/fwlink/p/?LinkId=780766">
                                 Neuigkeiten
