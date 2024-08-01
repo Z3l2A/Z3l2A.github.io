@@ -1,3 +1,81 @@
-<html>
-<iframe width="100%" height="100%" resize="both" scale="1" src="https://www.bing.com/copilot?setlang=de-DE&sid=26F84B90919D66642867585690376747&toWww=1&redig=B5A1CCBCB5174A6F90A9AC69467A361C" frameborder="0px" allow="join-ad-interest-group browsing-topics run-ad-auction" allowFullscreen="true" style="margin-bottom: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px; pointer-events: all !important; background-image: none !important;"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator and Decoder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <input type="file" id="fileInput">
+    <textarea id="textInput" placeholder="Enter text here"></textarea>
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qrcode"></div>
+
+    <h1>QR Code Decoder</h1>
+    <input type="file" id="qrInput">
+    <button onclick="decodeQRCode()">Decode QR Code</button>
+    <textarea id="decodedOutput" placeholder="Decoded content will appear here"></textarea>
+
+    <h1>BASE64 Decoder</h1>
+    <textarea id="base64Input" placeholder="Enter BASE64 here"></textarea>
+    <button onclick="decodeBase64()">Decode BASE64</button>
+    <textarea id="base64Output" placeholder="Decoded content will appear here"></textarea>
+
+    <script>
+        function generateQRCode() {
+            var fileInput = document.getElementById('fileInput').files[0];
+            var textInput = document.getElementById('textInput').value;
+            var qrCodeContainer = document.getElementById('qrcode');
+            qrCodeContainer.innerHTML = '';
+
+            if (fileInput) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    new QRCode(qrCodeContainer, event.target.result);
+                };
+                reader.readAsDataURL(fileInput);
+            } else if (textInput) {
+                new QRCode(qrCodeContainer, textInput);
+            }
+        }
+
+        function decodeQRCode() {
+            var qrInput = document.getElementById('qrInput').files[0];
+            if (qrInput) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = new Image();
+                    img.src = event.target.result;
+                    img.onload = function() {
+                        var canvas = document.createElement('canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        context.drawImage(img, 0, 0);
+                        var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                        var code = jsQR(imageData.data, canvas.width, canvas.height);
+                        if (code) {
+                            document.getElementById('decodedOutput').value = code.data;
+                        } else {
+                            alert('No QR code found.');
+                        }
+                    };
+                };
+                reader.readAsDataURL(qrInput);
+            }
+        }
+
+        function decodeBase64() {
+            var base64Input = document.getElementById('base64Input').value;
+            try {
+                var decodedData = atob(base64Input);
+                document.getElementById('base64Output').value = decodedData;
+            } catch (e) {
+                alert('Invalid BASE64 string.');
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+</body>
 </html>
