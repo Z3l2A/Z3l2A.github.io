@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" contenteditable="true">
+<html lang="en" contenteditable="true" draggable="true">
 <head>
     <meta charset="UTF-8">
     <title>QR Code Generator and Decoder</title>
@@ -11,24 +11,20 @@
     <textarea id="textInput" placeholder="Enter text here"></textarea>
     <button onclick="generateQRCode()">Generate QR Code</button>
     <div id="qrcode"></div>
-
     <h1>QR Code Decoder</h1>
     <input type="file" id="qrInput">
     <button onclick="decodeQRCode()">Decode QR Code</button>
     <textarea id="decodedOutput" placeholder="Decoded content will appear here"></textarea>
-
     <h1>BASE64 Decoder</h1>
     <textarea id="base64Input" placeholder="Enter BASE64 here"></textarea>
     <button onclick="decodeBase64()">Decode BASE64</button>
     <textarea id="base64Output" placeholder="Decoded content will appear here"></textarea>
-
     <script>
         function generateQRCode() {
             var fileInput = document.getElementById('fileInput').files[0];
             var textInput = document.getElementById('textInput').value;
             var qrCodeContainer = document.getElementById('qrcode');
             qrCodeContainer.innerHTML = '';
-
             if (fileInput) {
                 var reader = new FileReader();
                 reader.onload = function(event) {
@@ -39,7 +35,6 @@
                 new QRCode(qrCodeContainer, textInput);
             }
         }
-
         function decodeQRCode() {
             var qrInput = document.getElementById('qrInput').files[0];
             if (qrInput) {
@@ -65,7 +60,6 @@
                 reader.readAsDataURL(qrInput);
             }
         }
-
         function decodeBase64() {
             var base64Input = document.getElementById('base64Input').value;
             try {
