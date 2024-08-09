@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" contenteditable="true" draggable="true"><style>
+* {
+width: 100% !important;
+scale: 100% !important;
+border: none !important;
+padding: none !important;
+margin: none !important;
+pointer-events: all !important;
+background-color: #000000FF !important;
+accent-color: #FF00FFFF !important;
+visibility: visible !important;
+overflow: none !important;
+resize: both !important;
+color: #FFFFFFFF !important;
+font-size: 20px !important;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator and Decoder</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <input type="file" id="fileInput">
+    <textarea id="textInput" placeholder="Enter text here"></textarea>
+    <button onclick="generateQRCode()">Generate QR Code</button>
+    <div id="qrcode"></div>
+    <h1>QR Code Decoder</h1>
+    <input type="file" id="qrInput">
+    <button onclick="decodeQRCode()">Decode QR Code</button>
+    <textarea id="decodedOutput" placeholder="Decoded content will appear here"></textarea>
+    <h1>BASE64 Decoder</h1>
+    <textarea id="base64Input" placeholder="Enter BASE64 here"></textarea>
+    <button onclick="decodeBase64()">Decode BASE64</button>
+    <textarea id="base64Output" placeholder="Decoded content will appear here"></textarea>
+    <script>
+        function generateQRCode() {
+            var fileInput = document.getElementById('fileInput').files[0];
+            var textInput = document.getElementById('textInput').value;
+            var qrCodeContainer = document.getElementById('qrcode');
+            qrCodeContainer.innerHTML = '';
+            if (fileInput) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    new QRCode(qrCodeContainer, event.target.result);
+                };
+                reader.readAsDataURL(fileInput);
+            } else if (textInput) {
+                new QRCode(qrCodeContainer, textInput);
+            }
+        }
+        function decodeQRCode() {
+            var qrInput = document.getElementById('qrInput').files[0];
+            if (qrInput) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = new Image();
+                    img.src = event.target.result;
+                    img.onload = function() {
+                        var canvas = document.createElement('canvas');
+                        var context = canvas.getContext('2d');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        context.drawImage(img, 0, 0);
+                        var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                        var code = jsQR(imageData.data, canvas.width, canvas.height);
+                        if (code) {
+                            document.getElementById('decodedOutput').value = code.data;
+                        } else {
+                            alert('No QR code found.');
+                        }
+                    };
+                };
+                reader.readAsDataURL(qrInput);
+            }
+        }
+        function decodeBase64() {
+            var base64Input = document.getElementById('base64Input').value;
+            try {
+                var decodedData = atob(base64Input);
+                document.getElementById('base64Output').value = decodedData;
+            } catch (e) {
+                alert('Invalid BASE64 string.');
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+</body>
+</html>
