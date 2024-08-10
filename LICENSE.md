@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" contenteditable="true" draggable="true"><head><style>
 * {
 width: 100% !important;
