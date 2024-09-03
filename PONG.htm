@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PONG Game</title>
+    <style>
+        canvas { background: #000; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <canvas id="pongCanvas" width="1800" height="900"></canvas>
+    <script>
+        const canvas = document.getElementById("pongCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const paddleWidth = 10, paddleHeight = 75;
+        const ballRadius = 10;
+        let paddle1Y = (canvas.height - paddleHeight) / 2;
+        let paddle2Y = (canvas.height - paddleHeight) / 2;
+        let ballX = canvas.width / 2, ballY = canvas.height / 2;
+        let ballDX = 2, ballDY = -2;
+
+        document.addEventListener("keydown", keyDownHandler);
+        document.addEventListener("keyup", keyUpHandler);
+
+        let upPressed = false, downPressed = false;
+        let wPressed = false, sPressed = false;
+
+        function keyDownHandler(e) {
+            if (e.key == "ArrowUp") upPressed = true;
+            if (e.key == "ArrowDown") downPressed = true;
+            if (e.key == "w") wPressed = true;
+            if (e.key == "s") sPressed = true;
+        }
+
+        function keyUpHandler(e) {
+            if (e.key == "ArrowUp") upPressed = false;
+            if (e.key == "ArrowDown") downPressed = false;
+            if (e.key == "w") wPressed = false;
+            if (e.key == "s") sPressed = false;
+        }
+
+        function drawPaddle(x, y) {
+            ctx.beginPath();
+            ctx.rect(x, y, paddleWidth, paddleHeight);
+            ctx.fillStyle = "#FFF";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "#FFF";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPaddle(0, paddle1Y);
+            drawPaddle(canvas.width - paddleWidth, paddle2Y);
+            drawBall();
+
+            if (ballY + ballDY < ballRadius || ballY + ballDY > canvas.height - ballRadius) ballDY = -ballDY;
+            if (ballX + ballDX < ballRadius) {
+                if (ballY > paddle1Y && ballY < paddle1Y + paddleHeight) ballDX = -ballDX;
+                else resetBall();
+            } else if (ballX + ballDX > canvas.width - ballRadius) {
+                if (ballY > paddle2Y && ballY < paddle2Y + paddleHeight) ballDX = -ballDX;
+                else resetBall();
+            }
+
+            ballX += ballDX;
+            ballY += ballDY;
+
+            if (wPressed && paddle1Y > 0) paddle1Y -= 7;
+            if (sPressed && paddle1Y < canvas.height - paddleHeight) paddle1Y += 7;
+            if (upPressed && paddle2Y > 0) paddle2Y -= 7;
+            if (downPressed && paddle2Y < canvas.height - paddleHeight) paddle2Y += 7;
+
+            requestAnimationFrame(draw);
+        }
+
+        function resetBall() {
+            ballX = canvas.width / 2;
+            ballY = canvas.height / 2;
+            ballDX = -ballDX;
+        }
+
+        draw();
+    </script>
+</body>
+</html>
