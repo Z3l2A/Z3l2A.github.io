@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abenteuer für Kleine</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #FFEBEE;
+      color: #D32F2F;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #C2185B;
+    }
+    p {
+      font-size: 1.2em;
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 1em;
+      background-color: #F8BBD0;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #F48FB1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Magisches Abenteuer</h1>
+  <div id="game"></div>
+
+  <script>
+    const scenes = {
+      start: {
+        text: "Du bist auf einer Wiese voller bunter Blumen. Vor dir siehst du einen Wald, einen Hügel und einen Fluss. Wohin möchtest du gehen?",
+        options: [
+          { text: "In den Wald", nextScene: "forest" },
+          { text: "Den Hügel hinauf", nextScene: "hill" },
+          { text: "Zum Fluss", nextScene: "river" }
+        ]
+      },
+      forest: {
+        text: "Im Wald triffst du einen freundlichen Hasen. Er bietet dir eine Karotte an. Was möchtest du tun?",
+        options: [
+          { text: "Die Karotte essen", nextScene: "eatCarrot" },
+          { text: "Dem Hasen folgen", nextScene: "followRabbit" },
+          { text: "Zurück zur Wiese", nextScene: "start" }
+        ]
+      },
+      hill: {
+        text: "Auf dem Hügel entdeckst du einen Drachen, der Seifenblasen pustet. Er lädt dich ein mitzumachen.",
+        options: [
+          { text: "Seifenblasen pusten", nextScene: "blowBubbles" },
+          { text: "Mit dem Drachen fliegen", nextScene: "flyDragon" },
+          { text: "Zurück zur Wiese", nextScene: "start" }
+        ]
+      },
+      river: {
+        text: "Am Fluss siehst du ein sprechendes Fischlein. Es erzählt dir von einem Schatz unter Wasser.",
+        options: [
+          { text: "Nach dem Schatz tauchen", nextScene: "diveTreasure" },
+          { text: "Mit dem Fisch sprechen", nextScene: "talkFish" },
+          { text: "Zurück zur Wiese", nextScene: "start" }
+        ]
+      },
+      eatCarrot: {
+        text: "Die Karotte ist magisch! Du kannst jetzt mit Tieren sprechen.",
+        options: [
+          { text: "Mit den Vögeln singen", nextScene: "singBirds" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      followRabbit: {
+        text: "Der Hase führt dich zu einem geheimen Garten voller Süßigkeiten!",
+        options: [
+          { text: "Süßigkeiten probieren", nextScene: "eatSweets" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      blowBubbles: {
+        text: "Die Seifenblasen schweben hoch in den Himmel und funkeln wie Sterne.",
+        options: [
+          { text: "Eine Seifenblase folgen", nextScene: "followBubble" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      flyDragon: {
+        text: "Du fliegst mit dem Drachen über das Land und siehst wunderbare Orte.",
+        options: [
+          { text: "Über den Regenbogen fliegen", nextScene: "rainbow" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      diveTreasure: {
+        text: "Unter Wasser findest du eine funkelnde Schatztruhe voller Perlen.",
+        options: [
+          { text: "Perlen sammeln", nextScene: "collectPearls" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      talkFish: {
+        text: "Der Fisch erzählt dir lustige Geschichten vom Meer.",
+        options: [
+          { text: "Mehr Geschichten hören", nextScene: "moreStories" },
+          { text: "Zurück zur Wiese", nextScene: "start" },
+          { text: "Abenteuer beenden", nextScene: "end" }
+        ]
+      },
+      // Weitere Szenen können hinzugefügt werden...
+
+      end: {
+        text: "Danke für das Spielen! Möchtest du nochmal von vorne beginnen?",
+        options: [
+          { text: "Ja, nochmal spielen!", nextScene: "start" },
+          { text: "Nein, Spiel beenden", nextScene: "goodbye" }
+        ]
+      },
+      goodbye: {
+        text: "Auf Wiedersehen! Bis zum nächsten Mal!",
+        options: []
+      }
+    };
+
+    let currentScene = "start";
+
+    function displayScene(scene) {
+      const gameDiv = document.getElementById("game");
+      gameDiv.innerHTML = "";
+
+      const sceneText = document.createElement("p");
+      sceneText.innerText = scenes[scene].text;
+      gameDiv.appendChild(sceneText);
+
+      scenes[scene].options.forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option.text;
+        button.onclick = () => {
+          currentScene = option.nextScene;
+          displayScene(currentScene);
+        };
+        gameDiv.appendChild(button);
+      });
+    }
+
+    displayScene(currentScene);
+  </script>
+
+</body>
+</html>
