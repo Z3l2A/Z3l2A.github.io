@@ -1,1 +1,0 @@
-echo 'ffmpeg -hwaccel cuda -hwaccel_output_format cuda -i '' -c:v hevc_nvenc -preset p7 -tune hq -rc vbr -cq 28 -maxrate 1200k -bufsize 2400k -spatial-aq 1 -temporal-aq 1 -c:a libopus -b:a 128k -vbr on -compression_level 10 '''
