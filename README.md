@@ -1,4 +1,3 @@
-# README.md
 ヾ(≧▽≦*)o
 
 ..... (¯`v´¯)♥
@@ -11,21 +10,21 @@
 
 edit "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.xml"
 
-&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;
-&lt;!-- $Change: 600955 $ (must be within the first 200 characters of the file) --&gt;
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- $Change: 600955 $ (must be within the first 200 characters of the file) -->
 
-&lt;Root fadein_duration = "0"
+<Root fadein_duration = "0"
       fadeout_duration = "0"
       viewslide_duration = "0"
       viewfade_duration = "0"
       alpha = "0"
-      /&gt;
+      />
 
 and make the file read-only
 then delete "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.bxml"
 edit "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Options.xml"
 search for the line "gmlevel=-1" and remove it so the line becomes
-       &lt;OptionSubGroup title="&amp;lt;localized token=MainMenu_Options_Debug /&amp;gt;"&gt;
+       <OptionSubGroup title="&lt;localized token=MainMenu_Options_Debug /&gt;">
 and make it read-only
 then delete "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Options.bxml"
 (the .bxml files are generated after the .xml files are read. That's why, after the edit it is good to let it actualize it directly. At least many of the edits I did in the .xml only took place after I deleted the .bxml file of the same name before the extension-type. So, that might be the reason why!)
@@ -35,7 +34,7 @@ unless you're starting it from a shortcut then on it's file properties those mus
 Rightclick on "ClientPatcher.exe"
 Click Send To and Create shortcut (to desktop)
 Rightclick on it there and open Properties
-Set Advanced =&gt; "Run as administrator"
+Set Advanced => "Run as administrator"
 Set Run: "Maximized"
 Click on Apply
 stay there
@@ -47,7 +46,7 @@ If you initialize SWL by **ClientPatcher.exe**, all settings of compatability-mo
 ...
 ##++ How to fix DX11-crashing! ++
 **Rightclick** on the applications mentioned:
-**Rightclick** =&gt; **Properties** =&gt; **Compatability**...
+**Rightclick** => **Properties** => **Compatability**...
 **"C:\Program Files (x86)\Funcom\Secret World Legends\ClientPatcher.exe"**
 ~~"C:\Program Files (x86)\Funcom\Secret World Legends\PatcherSetup.exe"~~
 ~~"C:\Program Files (x86)\Funcom\Secret World Legends\SecretWorldLegends.exe"~~
@@ -85,7 +84,7 @@ it becomes a folder that contains all tasks of biblic proportions!
 https://www.curseforge.com/tsw/tsw-mods
 https://www.curseforge.com/swlegends/tswl-mods
 ...
-## The Basics... any Q&amp;A, thus your light in the darkness. =)
+## The Basics... any Q&A, thus your light in the darkness. =)
 **FatherDuffy'sFightClub** - https://fdfc.info
 **SWLAgentNetworkExplained** - https://www.tswdb.com/agent-network/agent-network-master-guide
 **SWLAgentsSpreadsheet** - https://docs.google.com/spreadsheets/d/1dyVfabthDrR67g5zzsm5jI4GlAT2edMTnvezmdc0DFw
@@ -93,7 +92,7 @@ https://www.curseforge.com/swlegends/tswl-mods
 **SWLChampions** - https://www.tswdb.com/miscellaneous/champions/champion-list
 **SWLCommands** - http://legacy.tswdb.com/miscellaneous/chat-commands
 **SWLDatabase** - https://www.tswdb.com
-**SWLGear&amp;Theorycrafting** - https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI
+**SWLGear&Theorycrafting** - https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI
 **SWLMarket** - https://swlmarket.azurewebsites.net
 **SWLLeaderbords** - https://leaderboards.secretworldlegends.com
 **SWLLegends** - https://www.tswdb.com/legends/
@@ -139,14 +138,14 @@ Additionally, be aware that it is possible to edit the files. The mod Meeehrpack
 **SWLLassie'sWaypoints** - https://www.curseforge.com/swlegends/tswl-mods/lassies-waypoints
 **TradepostUtility** - https://swl.curseforge.com/projects/tradepost-utility
 ...
-##Experimental section..., ... any misconfiguration can eradicate your soft- &amp;/or hardware. ò.ó
+##Experimental section..., ... any misconfiguration can eradicate your soft- &/or hardware. ò.ó
 **Commands_GUI_Guide** - https://guidescroll.com/2012/07/the-secret-world-chat-commands-and-gui-guide/
 **7zip** - https://www.7-zip.org/download.html
 **AAexplained** - https://www.tomshardware.com/reviews/anti-aliasing-nvidia-geforce-amd-radeon,2868.html
 **BCDEDITpcisettings** - https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set
 **directx_Jun2010_redist** - https://www.microsoft.com/en-us/download/details.aspx?id=8109
 **ExplainingComputers** - https://www.youtube.com/user/ExplainingComputers / https://www.explainingcomputers.com/
-**Firmware&amp;Maintenance** - https://www.station-drivers.com
+**Firmware&Maintenance** - https://www.station-drivers.com
 **LinusTechTips** - https://www.youtube.com/user/LinusTechTips
 **NVIDIAdriverQuery** - https://www.nvidia.de/Download/Find.aspx?lang=en
 **NvidiaProfileInspector** - https://pcgamingwiki.com/wiki/Nvidia_Profile_Inspector
@@ -175,13 +174,13 @@ WHAT IS MY CURRENT VALUE?
 INPUT
 command without value to see it.
 /setoption ScreenBrightness
-[05:28] Variable &lt;ScreenBrightness&gt; is &lt;0.500000&gt;
+[05:28] Variable <ScreenBrightness> is <0.500000>
 "C:\Program Files (x86)\Funcom\Secret World Legends\scripts"
 "C:\Program Files (x86)\Funcom\Secret World Legends\scripts\auto_login"
 "C:\Program Files (x86)\Funcom\Secret World Legends\scripts\auto_teleport"
 https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI/edit#gid=0
 https://lomsglobal.com/threads/starfoxs-mod-repository.2517/
-##! =&gt; This fixes Windows Defender fake-alert
+##! => This fixes Windows Defender fake-alert
 mentioned in https://forums.funcom.com/t/trojan-horse-virus-found-in-swl-patch-from-steam-and-during-installation-using-install-file-from-swl-website/156537/36 but it's up to you how much you want to exclude.
 Just for fixing the game exclude your Funcom folder e.g. "C:\Program Files (x86)\Funcom" or if you use **Steam** your "C:\Program Files (x86)\Steam\steamapps\common" folder, OR if using an extern disk the **SteamLibrary** folder there e.g. "D:\SteamLibrary".
 Press
@@ -196,7 +195,7 @@ Untold Stories of The Secret World
 https://www.curseforge.com/tsw/tsw-mods/eltorqiro_uitweaks
 ElTorqiro_UITweaks
 
-&amp; some more:
+& some more:
 
 TSW-mods (partially/full compatible)
 https://www.curseforge.com/tsw/tsw-mods
