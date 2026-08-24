@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Vincent Gärtner, Z3l2A.GITHUB.IO & Licensee contributors
+Copyright (c) 2026 Vincent Gärtner | Z3l2A.GITHUB.IO hosted at 'https://github.com/Z3l2A/Z3l2A.github.io'
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
