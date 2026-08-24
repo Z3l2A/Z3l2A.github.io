@@ -1,5 +1,5 @@
 # README.md
-<textarea class="form-control" id="editor-textarea" rows="9">ヾ(≧▽≦*)o
+ヾ(≧▽≦*)o
 
 ..... (¯`v´¯)♥
 .......•.¸.•´
@@ -216,4 +216,4 @@ In probably worst case scenario, you need to check the Windows **Event Viewer** 
 I also forgot to ask if you run in **Windowed(Borderless) in DX9-mode** which is like the core of maximum compatability. If nothing else helps, maybe you can get friends with this. DX11 offers more things, but also DX9 often gives much more FPS compared to the small degradation of graphics.
 I and I remember on people telling the game crashes when certain types of **V-Sync** are being used... it's been a while since I was on that. There's many types of that, G-Sync, Fast Sync, then this SLI weird feature with NVIDIA for V-Sync which can be good under conditions too, and many many more. Turning the default **Default(On)** to **Force Off** might be worth a try too.
 
-http://tsw.nex4k.net/lairs</textarea>
+http://tsw.nex4k.net/lairs
