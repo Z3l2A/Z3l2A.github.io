@@ -14,4 +14,4 @@
 
     https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/qrcode.js
 
-# ``` '[https://github.com/Z3l2A/Z3l2A.github.io]' ```
+# ``` https://github.com/Z3l2A/Z3l2A.github.io ```
