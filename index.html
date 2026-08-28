@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="de_DE">
-<head>
+<html lang="de_DE"><head>
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <meta charset="UTF-8">
     <title>QR-Code_Tool</title>
@@ -162,10 +161,57 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode"><div>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h2, p {
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+</style>
+</div>
+
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+<h2>Horizontal Navbar Using Float</h2>
+
+<p>Some text on the website.</p>
     <div class="header-bar">
         <img class="fit-picture" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Our business is life itself!">
-        <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
     </div>
 
     <h1>QR-Code_text-to-QR</h1>
@@ -181,7 +227,7 @@
     <h1>QR-Code_to-text</h1>
     <input type="file" id="qrInput" accept="image/*">
     <button onclick="decodeQRCode()">Decode QR Code</button>
-    <textarea id="decodedOutput" placeholder="Dekodierter QR-Code-Inhalt erscheint hier..." readonly></textarea>
+    <textarea id="decodedOutput" placeholder="Dekodierter QR-Code-Inhalt erscheint hier..." readonly=""></textarea>
     <button class="btn-copy" onclick="copyToClipboard('decodedOutput')">📋 Inhalt kopieren</button>
 
     <h1>BASE64_to-text</h1>
@@ -189,7 +235,7 @@
     <div id="base64InputCounter" class="counter">Zeichen: 0 / 4000 (noch 4000 frei)</div>
 
     <button onclick="decodeBase64()">Decode BASE64</button>
-    <textarea id="base64Output" placeholder="Dekodierter BASE64-Inhalt erscheint hier..." readonly></textarea>
+    <textarea id="base64Output" placeholder="Dekodierter BASE64-Inhalt erscheint hier..." readonly=""></textarea>
     <button class="btn-copy" onclick="copyToClipboard('base64Output')">📋 Inhalt kopieren</button>
 
     <script>
@@ -357,5 +403,6 @@
             });
         }
     </script>
-</body>
-</html>
+
+
+</body></html>
