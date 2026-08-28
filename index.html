@@ -1,57 +1,307 @@
-<html lang="de_DE" contenteditable="true" draggable="true" style="
-* {
-width: 100% !important;
-scale: 100% !important;
-border: none !important;
-padding: none !important;
-margin: none !important;
-pointer-events: all !important;
-background-color: #000000FF !important;
-accent-color: #FF00FFFF !important;
-visibility: visible !important;
-overflow: none !important;
-resize: both !important;
-color: #FFFFFFFF !important;
-font-size: 20px !important;
-}"><head>
+<!DOCTYPE html>
+<html lang="de_DE">
+<head>
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <meta charset="UTF-8">
     <title>QR-Code_Tool</title>
+
+    <!-- 1. Offline-Einbettung: jsQR.js <script>\n...\n</script> -->
     <script src="https://z3l2a.github.io/jsQR.js"></script>
+
+    <!-- 2. Offline-Einbettung: qrcode.js <script>\n...\n</script> -->
     <script src="https://z3l2a.github.io/qrcode.js"></script>
-    <script src="https://z3l2a.github.io/profile.js" async="" defer="" type="text/javascript"></script>
+
+    <style>
+        :root {
+            --bg-color: #FFFFFF;
+            --text-color: #000000;
+            --input-bg: #F9F9F9;
+            --input-readonly-bg: #F0F0F0;
+            --accent-color: #FF00FF;
+            --accent-hover: #D400D4;
+            --copy-btn-bg: #28a745;
+            --copy-btn-hover: #218838;
+            --download-btn-bg: #008CBA;
+            --download-btn-hover: #007399;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #E0E0E0;
+            --input-bg: #1E1E1E;
+            --input-readonly-bg: #2A2A2A;
+            --accent-color: #FF00FF;
+            --accent-hover: #E000E0;
+            --copy-btn-bg: #218838;
+            --copy-btn-hover: #1e7e34;
+            --download-btn-bg: #007399;
+            --download-btn-hover: #005c7a;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: sans-serif;
+            font-size: 20px;
+            margin: 20px;
+            accent-color: var(--accent-color);
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #themeToggle {
+            width: auto;
+            padding: 8px 16px;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        ::selection {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        textarea, input[type="file"], button {
+            width: 100%;
+            font-size: 20px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            border: 2px solid var(--accent-color);
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        textarea[readonly] {
+            background-color: var(--input-readonly-bg);
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .fit-picture {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #qrcode {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #qrcode img, #qrcode canvas {
+            width: auto !important;
+            height: auto !important;
+            max-width: 100%;
+            background-color: #FFFFFF;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        .counter {
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .btn-download {
+            display: none;
+            background-color: var(--download-btn-bg);
+            border-color: var(--download-btn-bg);
+        }
+
+        .btn-download:hover {
+            background-color: var(--download-btn-hover);
+        }
+
+        .btn-copy {
+            background-color: var(--copy-btn-bg);
+            border-color: var(--copy-btn-bg);
+            margin-top: 2px;
+            margin-bottom: 20px;
+        }
+
+        .btn-copy:hover {
+            background-color: var(--copy-btn-hover);
+        }
+    </style>
 </head>
 <body>
-<img class="fit-picture" src="https://Z3l2A.github.io/Umbrella_Corporation.jpg" alt="https://Z3l2A.github.io/">
+    <div class="header-bar">
+        <img class="fit-picture" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Our business is life itself!">
+        <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </div>
+
     <h1>QR-Code_CREATE</h1>
-    <input type="file" id="fileInput">
-    <textarea id="textInput" placeholder="...add.text..."></textarea>
+    <input type="file" id="fileInput" accept=".txt" onchange="validateTxtFile(this)">
+
+    <textarea id="textInput" placeholder="Text hier eingeben..." maxlength="1270" oninput="updateCounter(this, 'textInputCounter', 1270)"></textarea>
+    <div id="textInputCounter" class="counter">Zeichen: 0 / 1270 (noch 1270 frei)</div>
+
     <button onclick="generateQRCode()">Generate QR Code</button>
     <div id="qrcode"></div>
+    <button id="downloadBtn" class="btn-download" onclick="downloadQRCode()">💾 QR-Code herunterladen (PNG)</button>
+
     <h1>QR Code Decoder</h1>
-    <input type="file" id="qrInput">
+    <input type="file" id="qrInput" accept="image/*">
     <button onclick="decodeQRCode()">Decode QR Code</button>
-    <textarea id="decodedOutput" placeholder="Decoded content will appear here"></textarea>
+    <textarea id="decodedOutput" placeholder="Dekodierter QR-Code-Inhalt erscheint hier..." readonly></textarea>
+    <button class="btn-copy" onclick="copyToClipboard('decodedOutput')">📋 Inhalt kopieren</button>
+
     <h1>BASE64 Decoder</h1>
-    <textarea id="base64Input" placeholder="Enter BASE64 here"></textarea>
+    <textarea id="base64Input" placeholder="BASE64-Code hier eingeben..." maxlength="4000" oninput="updateCounter(this, 'base64InputCounter', 4000)"></textarea>
+    <div id="base64InputCounter" class="counter">Zeichen: 0 / 4000 (noch 4000 frei)</div>
+
     <button onclick="decodeBase64()">Decode BASE64</button>
-    <textarea id="base64Output" placeholder="Decoded content will appear here"></textarea>
+    <textarea id="base64Output" placeholder="Dekodierter BASE64-Inhalt erscheint hier..." readonly></textarea>
+    <button class="btn-copy" onclick="copyToClipboard('base64Output')">📋 Inhalt kopieren</button>
+
     <script>
+        // Dark Mode Logik
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                updateThemeButton(true);
+            } else {
+                updateThemeButton(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeButton(isDark);
+        }
+
+        function updateThemeButton(isDark) {
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+
+        // Live-Zeichenzähler
+        function updateCounter(inputElement, counterId, maxLength) {
+            var currentLength = inputElement.value.length;
+            var remaining = maxLength - currentLength;
+            var counterElement = document.getElementById(counterId);
+
+            counterElement.innerText = "Zeichen: " + currentLength + " / " + maxLength + " (noch " + remaining + " frei)";
+
+            if (remaining === 0) {
+                counterElement.style.color = "#FF0000";
+            } else {
+                counterElement.style.color = "var(--accent-color)";
+            }
+        }
+
+        // Dateivalidierung (.txt)
+        function validateTxtFile(input) {
+            var file = input.files[0];
+            if (file) {
+                if (!file.name.toLowerCase().endsWith('.txt')) {
+                    alert('Ungültiges Dateiformat! Es dürfen nur .txt-Dateien hochgeladen werden.');
+                    input.value = '';
+                    return false;
+                }
+            }
+        }
+
+        // QR-Code Generierung
         function generateQRCode() {
             var fileInput = document.getElementById('fileInput').files[0];
             var textInput = document.getElementById('textInput').value;
             var qrCodeContainer = document.getElementById('qrcode');
+            var downloadBtn = document.getElementById('downloadBtn');
+
             qrCodeContainer.innerHTML = '';
+            downloadBtn.style.display = 'none';
+
+            var renderFinished = function() {
+                downloadBtn.style.display = 'block';
+            };
+
             if (fileInput) {
                 var reader = new FileReader();
                 reader.onload = function(event) {
-                    new QRCode(qrCodeContainer, event.target.result);
+                    var content = event.target.result;
+                    if (content.length > 2000) {
+                        alert('Achtung: Der Inhalt der Textdatei überschreitet die empfohlene Maximallänge von 2000 Zeichen.');
+                    }
+                    new QRCode(qrCodeContainer, content);
+                    setTimeout(renderFinished, 100);
                 };
-                reader.readAsDataURL(fileInput);
+                reader.readAsText(fileInput);
             } else if (textInput) {
                 new QRCode(qrCodeContainer, textInput);
+                setTimeout(renderFinished, 100);
             }
         }
+
+        // QR-Code PNG Download
+        function downloadQRCode() {
+            var container = document.getElementById('qrcode');
+            var img = container.querySelector('img');
+            var canvas = container.querySelector('canvas');
+            var imageSrc = "";
+
+            if (img && img.src && img.src.startsWith('data:image')) {
+                imageSrc = img.src;
+            } else if (canvas) {
+                imageSrc = canvas.toDataURL("image/png");
+            } else {
+                alert('Kein QR-Code zum Herunterladen gefunden.');
+                return;
+            }
+
+            var downloadLink = document.createElement('a');
+            downloadLink.href = imageSrc;
+            downloadLink.download = 'qrcode.png';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        // QR-Code Decoder
         function decodeQRCode() {
             var qrInput = document.getElementById('qrInput').files[0];
             if (qrInput) {
@@ -77,6 +327,8 @@ font-size: 20px !important;
                 reader.readAsDataURL(qrInput);
             }
         }
+
+        // Base64 Decoder
         function decodeBase64() {
             var base64Input = document.getElementById('base64Input').value;
             try {
@@ -86,6 +338,24 @@ font-size: 20px !important;
                 alert('Invalid BASE64 string.');
             }
         }
+
+        // Zwischenablage Kopierfunktion
+        function copyToClipboard(elementId) {
+            var textarea = document.getElementById(elementId);
+            if (!textarea || !textarea.value) {
+                alert('Kein Inhalt zum Kopieren vorhanden.');
+                return;
+            }
+
+            navigator.clipboard.writeText(textarea.value).then(function() {
+                alert('Inhalt erfolgreich in die Zwischenablage kopiert!');
+            }).catch(function(err) {
+                // Fallback für ältere Browser
+                textarea.select();
+                document.execCommand('copy');
+                alert('Inhalt kopiert!');
+            });
+        }
     </script>
-  <div class="badge-base LI-profile-badge" data-locale="de_DE" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="vincentgaertner" data-version="v1" data-rendered="true" data-uid="47335"><a class="badge-base__link LI-simple-link" href="https://z3l2a.github.io/linkedin.js">Vincent Gärtner</a><iframe frameborder="0" style="display: block;" height="355" width="336"></iframe></div>              
-</body></html>
+</body>
+</html>
