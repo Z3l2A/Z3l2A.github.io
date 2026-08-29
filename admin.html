@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Required</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f9; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        input, button { padding: 0.5rem 1rem; margin-top: 1rem; font-size: 1rem; }
+        button { cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+        .error { color: red; margin-top: 0.5rem; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>ENTER ACCESS CODE</h2>
+    <input type="password" id="accessCode" placeholder="Enter Code">
+    <br>
+    <!-- No inline onclick handler here -->
+    <button id="submitBtn">Submit</button>
+    <p id="errorMsg" class="error">Invalid Access Code</p>
+</div>
+
+<script>
+    // Event listener attached via JavaScript instead of HTML
+    document.getElementById("submitBtn").addEventListener("click", function() {
+        const correctCode = "TRUSTNO1"; // Is this real? haha, yes, it is -, it's a 'fun paramter'
+        const redirectUrl = "https://z3l2a.github.io/index.html"; // redirection
+        
+        const userInput = document.getElementById("accessCode").value;
+        
+        if (userInput === correctCode) {
+            window.location.href = redirectUrl;
+        } else {
+            document.getElementById("errorMsg").style.display = "block";
+        }
+    });
+
+    // Optional: Allow pressing the "Enter" key to submit
+    document.getElementById("accessCode").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            document.getElementById("submitBtn").click();
+        }
+    });
+</script>
+
+</body>
+</html>
