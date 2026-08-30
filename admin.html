@@ -9,7 +9,7 @@
         input, button { padding: 0.5rem 1rem; margin-top: 1rem; font-size: 1rem; }
         button { cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
         .error { color: red; margin-top: 0.5rem; display: none; }
-    </style>
+    </style>    
 </head>
 <body>
 
@@ -17,27 +17,31 @@
     <h2>ENTER ACCESS CODE</h2>
     <input type="password" id="accessCode" placeholder="Enter Code">
     <br>
-    <!-- No inline onclick handler here -->
     <button id="submitBtn">Submit</button>
     <p id="errorMsg" class="error">Invalid Access Code</p>
 </div>
 
 <script>
-    // Event listener attached via JavaScript instead of HTML
+    // Dictionary mapping access codes to their respective URLs
+    const accessRoutes = {
+        "CUPS": "https://[2a02:908:1347:bce0:18c0:4dff:fe3b:b6f0]:631/",
+        "USER": "https://1drv.ms/w/c/ac5cc98241a40a0e/IQCd8xI8ffmnSbO-9jKd05pkAW_xsUEMzRFe1YVsyVJVIlg",
+        "EDIT": "https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/admin.html",
+				"PLAY": "https://z3l2a.github.io/Pong.html"
+    };
+
     document.getElementById("submitBtn").addEventListener("click", function() {
-        const correctCode = "TRUSTNO1"; // Is this real? haha, yes, it is -, it's a 'fun paramter'
-        const redirectUrl = "https://z3l2a.github.io/index.html"; // redirection
-        
-        const userInput = document.getElementById("accessCode").value;
-        
-        if (userInput === correctCode) {
-            window.location.href = redirectUrl;
+        const userInput = document.getElementById("accessCode").value.trim();
+        const targetUrl = accessRoutes[userInput];
+
+        if (targetUrl) {
+            document.getElementById("errorMsg").style.display = "none";
+            window.location.href = targetUrl;
         } else {
             document.getElementById("errorMsg").style.display = "block";
         }
     });
 
-    // Optional: Allow pressing the "Enter" key to submit
     document.getElementById("accessCode").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             document.getElementById("submitBtn").click();
