@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Access Required</title>
+    <title>TERMINAL</title>
     <style>
         body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f9; }
         .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
@@ -12,29 +12,29 @@
     </style>    
 </head>
 <body>
-
 <div class="card">
     <h2>ENTER ACCESS CODE</h2>
-    <input type="password" id="accessCode" placeholder="Enter Code">
+    <input type="password" id="accessCode" placeholder="ACCESS CODE">
     <br>
-    <button id="submitBtn">Submit</button>
-    <p id="errorMsg" class="error">Invalid Access Code</p>
+    <button id="submitBtn">ENTER</button>
+    <p id="errorMsg" class="error">ACCESS DENIED!</p>
 </div>
-
 <script>
     // Dictionary mapping access codes to their respective URLs
     const accessRoutes = {
-        "CUPS": "https://[2a02:908:1347:bce0:18c0:4dff:fe3b:b6f0]:631/",
-        "USER": "https://1drv.ms/w/c/ac5cc98241a40a0e/IQCd8xI8ffmnSbO-9jKd05pkAW_xsUEMzRFe1YVsyVJVIlg",
-        "EDIT": "https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/admin.html",
-		"PLAY": "https://z3l2a.github.io/Pong.html",
-		"0000": "about:blank"
+        "NAS": "https://jlyot9c0y796bw5d.myfritz.net/nas#/login",
+        "CV": "https://1drv.ms/w/c/ac5cc98241a40a0e/IQCd8xI8ffmnSbO-9jKd05pkAW_xsUEMzRFe1YVsyVJVIlg",
+        "ROOT": "https://github.com/Z3l2A/Z3l2A.github.io/",
+				"PONG": "https://z3l2a.github.io/Pong.html",
+				"MAIN": "https://z3l2a.github.io/index.html",
+				"YOUTUBE": "https://youtube.com/@Vincent_Gaertner",
+				"LINKEDIN": "https://www.linkedin.com/in/vincentgaertner/",
+				"MAIL": "mailto:VincentGaertner@outlook.de",
+				"0": "about:blank"
     };
-
     document.getElementById("submitBtn").addEventListener("click", function() {
         const userInput = document.getElementById("accessCode").value.trim();
         const targetUrl = accessRoutes[userInput];
-
         if (targetUrl) {
             document.getElementById("errorMsg").style.display = "none";
             window.location.href = targetUrl;
@@ -42,13 +42,11 @@
             document.getElementById("errorMsg").style.display = "block";
         }
     });
-
     document.getElementById("accessCode").addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
             document.getElementById("submitBtn").click();
         }
     });
 </script>
-
 </body>
 </html>
