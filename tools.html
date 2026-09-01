@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de_DE">
+<head>
+    <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
+    <title>TOOLS</title>
+    <style>
+        :root {
+            --bg-color: #FFFFFF;
+            --text-color: #000000;
+            --input-bg: #FFFFFF;
+            --input-readonly-bg: #FFFFFF;
+            --accent-color: #FF00FF;
+            --accent-hover: #FF00FF;
+            --copy-btn-bg: #FFFFFF;
+            --copy-btn-hover: #FF00FF;
+            --download-btn-bg: #FFFFFF;
+            --download-btn-hover: #FF00FF;
+            --nav-bg: #F0F0F0;
+        }
+
+        body.dark-mode {
+            --bg-color: #000000;
+            --text-color: #FFFFFF;
+            --input-bg: #000000;
+            --input-readonly-bg: #000000;
+            --accent-color: #FF00FF;
+            --accent-hover: #FF00FF;
+            --copy-btn-bg: #000000;
+            --copy-btn-hover: #FF00FF;
+            --download-btn-bg: #000000;
+            --download-btn-hover: #FF00FF;
+            --nav-bg: #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: sans-serif;
+            font-size: 18px;
+            margin: 0;
+            padding: 20px;
+            accent-color: var(--accent-color);
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style-type: none;
+            margin: -20px -20px 20px -20px;
+            padding: 0;
+            overflow: hidden;
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        nav li {
+            float: left;
+        }
+
+        nav li a {
+            display: block;
+            color: var(--text-color);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav li a:hover {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #themeToggle {
+            width: auto;
+            padding: 8px 16px;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        ::selection {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+        }
+
+        /* Überschriften & Text */
+        h1 {
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: var(--accent-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p, li {
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .topic-block {
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--accent-color);
+        }
+
+        textarea, input[type="file"], button {
+            width: 100%;
+            font-size: 18px;
+            background-color: var(--input-bg);
+            color: var(--text-color);
+            border: 2px solid var(--accent-color);
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: #FFFFFF;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .fit-picture {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">'go back to HOME /'</a></li>
+        </ul>
+    </nav>
+
+    <div class="header-bar">
+        <img class="fit-picture" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Our business is life itself!">
+        <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+    </div>
+
+    <main>
+        <h1>Z3l2A.github.io</h1>
+        <p>Tools & alles, was damit zu tun hat!</p>
+
+        <!-- Hauptabschnitt -->
+        <h1>T.exe & TT.exe</h1>
+
+        <!-- Thema 1 -->
+        <section class="topic-block">
+            <h2>Thema 1: Text-Converter & Decoders</h2>
+            <p>
+                Hier befinden sich Hilfswerkzeuge zur Umwandlung von Zeichenketten, Base64-Encodings 
+                und Hash-Generierung.
+            </p>
+            <ul>
+                <li>Base64 En- / Decoder</li>
+                <li>SHA-256 Checksum Generator</li>
+            </ul>
+        </section>
+
+        <!-- Thema 2 -->
+        <section class="topic-block">
+            <h2>Thema 2: Netzwerke & Skripte</h2>
+            <p>
+                Sammlung von nützlichen Befehlen, Automatisierungsskripten und Netzwerkanalysen.
+            </p>
+            <textarea placeholder="Füge hier Befehle oder Ausgaben ein..."></textarea>
+        </section>
+
+        <!-- Thema 3 -->
+        <section class="topic-block">
+            <h2>Thema 3: System-Konfigurationen</h2>
+            <p>
+                Dokumentation und Vorlagen für Konfigurationsdateien (Linux / Windows).
+            </p>
+        </section>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('themeToggle');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️ Light Mode';
+            } else {
+                btn.textContent = '🌙 Dark Mode';
+            }
+        }
+    </script>
+</body>
+</html>
