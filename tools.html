@@ -173,13 +173,44 @@
         <p>WEBSEITE IMBAU -, bitte ein paar Tage warten</p>
 
         <!-- Hauptabschnitt -->
-        <h1>HEADER_1</h1>
+        <h1>Python</h1>
 
         <!-- Thema 1 -->
         <section class="topic-block">
-            <h2>Thema 1: etwas Text</h2>
-            <p>
-                Noch mehr Text.
+            <h2>Entfernt je Zeile alles nach dem ersten Wort einer Text-Datei.</h2>
+            <p><textarea>
+                from pathlib import Path
+
+
+def reduce_to_first_word(
+    input_file: str = "/0/dll.txt", output_file: str = "/0/dll_neu.txt"
+):
+    input_path = Path(input_file)
+    output_path = Path(output_file)
+
+    if not input_path.is_file():
+        print(f"Fehler: Datei '{input_file}' wurde nicht gefunden.")
+        return
+
+    with (
+        input_path.open("r", encoding="utf-8") as infile,
+        output_path.open("w", encoding="utf-8") as outfile,
+    ):
+        for line in infile:
+            # Entfernt führende/nachfolgende Umbrüche und trennt beim ersten Whitespace
+            cleaned_line = line.strip()
+            if cleaned_line:
+                first_word = cleaned_line.split(maxsplit=1)[0]
+                outfile.write(first_word + "\n")
+            else:
+                outfile.write("\n")  # Behält leere Zeilen bei
+
+    print(f"Fertig! Ergebnis wurde in '{output_file}' gespeichert.")
+
+
+if __name__ == "__main__":
+    reduce_to_first_word()
+        </textarea>
             </p>
             <ul>
                 <li>Ja.</li>
