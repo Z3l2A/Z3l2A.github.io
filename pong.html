@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>PONG Game</title>
-<style>
 
-        canvas { background: #000; display: block; margin: 0 auto; }
+<html>
+
+<head>
+
+<title>PONG</title>
+
+<style>
+        canvas { background: #000000; display: block; margin: 0 auto; }
+
 </style>
+
 </head>
+
 <body>
+
 <canvas id="pongCanvas" width="1800" height="900"></canvas>
+
 <script>
 
         const canvas = document.getElementById("pongCanvas");
@@ -25,7 +33,7 @@
 
         let ballX = canvas.width / 2, ballY = canvas.height / 2;
 
-        let ballDX = 4, ballDY = -4; // Increased speed
+        let ballDX = 8, ballDY = -8; // Increased speed
  
         document.addEventListener("keydown", keyDownHandler);
 
@@ -140,6 +148,9 @@
         }
  
         draw();
+
 </script>
+
 </body>
+
 </html>
