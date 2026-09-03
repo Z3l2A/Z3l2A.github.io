@@ -177,13 +177,13 @@
 
         <!-- Thema 1 -->
         <section class="topic-block">
-            <h2>Entfernt je Zeile alles nach dem ersten Wort einer Text-Datei.</h2>
-            <p><div>
+            <h2>Entfernt je Zeile alles nach dem ersten Wort einer Text-Datei -, die Datei mit Python ausführen. Ich selbst nutze 'cpython-3.13.15-linux-x86_64-gnu/bin/python3.13', doch das bleibt jedem selbst überlassen.</h2>
+            <p><textarea>
                 from pathlib import Path
 
 
 def reduce_to_first_word(
-    input_file: str = "/0/dll.txt", output_file: str = "/0/dll_neu.txt"
+    input_file: str = "X0", output_file: str = "X1" # Hier bitte X0 mit dem Pfad der Quell-Eingangsdatei ändern, und X1 zum Pfad der Ziel-Ausgangsdatei.
 ):
     input_path = Path(input_file)
     output_path = Path(output_file)
@@ -210,7 +210,7 @@ def reduce_to_first_word(
 
 if __name__ == "__main__":
     reduce_to_first_word()
-        </div>
+        </textarea>
             </p>
             <ul>
                 <li>Ja.</li>
