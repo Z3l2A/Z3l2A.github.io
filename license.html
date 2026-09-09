@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
+    <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
+    <title>LICENSE — Z3l2A</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --card-bg: #f8f9fa;
+            --input-bg: #ffffff;
+            --accent-color: #d600d6;
+            --accent-hover: #b000b0;
+            --border-color: #e0e0e0;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+            --nav-bg: #f0f0f0;
+            --success-color: #2e7d32;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --input-bg: #2a2a2a;
+            --accent-color: #ff00ff;
+            --accent-hover: #d600d6;
+            --border-color: #333333;
+            --code-bg: #000000;
+            --code-text: #00ff66;
+            --nav-bg: #1e1e1e;
+            --success-color: #4caf50;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-color);
+            margin: -20px -20px 20px -20px;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Header Bar */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-logo {
+            max-height: 60px;
+            width: auto;
+        }
+
+        #themeToggle {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #themeToggle:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Content Sections */
+        h1 {
+            font-size: 26px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 6px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .license-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        .license-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .license-header h2 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 20px;
+        }
+
+        pre.license-text {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid var(--border-color);
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-action {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            font-weight: bold;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .btn-action:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Header Navigation -->
+    <nav>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/license.html" class="active">TERMS / LICENSE</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">Upstream [GitHub]</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="header-bar">
+            <img class="header-logo" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Umbrella Corporation Logo">
+            <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+        </header>
+
+        <main>
+            <h1>Software License</h1>
+
+            <section class="license-card">
+                <div class="license-header">
+                    <h2>MIT License</h2>
+                    <span class="badge">Open Source</span>
+                </div>
+
+                <p>Sofern nicht anders angegeben, stehen alle Inhalte, Skripte und Quelltexte dieses Repositories unter der MIT-Lizenz:</p>
+
+                <pre class="license-text" id="licenseBox">MIT License
+
+Copyright (c) 2026 Vincent Gärtner | Z3l2A.GITHUB.IO hosted at 'https://github.com/Z3l2A/Z3l2A.github.io'
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
+
+                <div class="action-bar">
+                    <button class="btn-action" onclick="copyLicenseText(this)">📋 Lizenztext kopieren</button>
+                    <a class="btn-action" href="https://github.com/Z3l2A/Z3l2A.github.io/blob/main/LICENSE.md" target="_blank" rel="noopener">📄 Raw LICENSE.md auf GitHub öffnen</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Theme Switcher Logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                updateThemeButton(true);
+            } else {
+                document.body.classList.remove('dark-mode');
+                updateThemeButton(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeButton(isDark);
+        }
+
+        function updateThemeButton(isDark) {
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        // Copy License Text Function
+        function copyLicenseText(btnElement) {
+            const licenseText = document.getElementById('licenseBox').innerText;
+
+            navigator.clipboard.writeText(licenseText).then(() => {
+                const originalText = btnElement.innerText;
+                btnElement.innerText = '✓ Kopiert!';
+                btnElement.style.borderColor = 'var(--success-color)';
+                btnElement.style.color = 'var(--success-color)';
+
+                setTimeout(() => {
+                    btnElement.innerText = originalText;
+                    btnElement.style.borderColor = '';
+                    btnElement.style.color = '';
+                }, 2000);
+            }).catch(() => {
+                alert('Lizenztext konnte nicht automatisch kopiert werden.');
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+</html>
