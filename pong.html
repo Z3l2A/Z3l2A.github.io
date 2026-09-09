@@ -1,156 +1,450 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="de">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
+    <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
+    <title>PONG — Z3l2A</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --card-bg: #f8f9fa;
+            --accent-color: #d600d6;
+            --accent-hover: #b000b0;
+            --border-color: #e0e0e0;
+            --nav-bg: #f0f0f0;
+            --canvas-bg: #050505;
+        }
 
-<title>PONG</title>
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --accent-color: #ff00ff;
+            --accent-hover: #d600d6;
+            --border-color: #333333;
+            --nav-bg: #1e1e1e;
+            --canvas-bg: #000000;
+        }
 
-<style>
-        canvas { background: #000000; display: block; margin: 0 auto; }
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
 
-</style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-color);
+            margin: -20px -20px 20px -20px;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Header Bar */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-logo {
+            max-height: 55px;
+            width: auto;
+        }
+
+        #themeToggle {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #themeToggle:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Game Card & Canvas Container */
+        .game-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        canvas {
+            background: var(--canvas-bg);
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        }
+
+        .controls-hint {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 10px;
+        }
+
+        .controls-hint span {
+            background-color: var(--nav-bg);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-family: monospace;
+        }
+    </style>
 </head>
+<body class="dark-mode">
 
-<body>
+    <!-- Header Navigation -->
+    <nav>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html" class="active">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/LICENSE.md">TERMS</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+        </ul>
+    </nav>
 
-<canvas id="pongCanvas" width="1800" height="900"></canvas>
+    <div class="container">
+        <header class="header-bar">
+            <img class="header-logo" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Umbrella Corporation Logo">
+            <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+        </header>
 
-<script>
+        <main>
+            <div class="game-card">
+                <div class="scoreboard">
+                    <span>SPIELER 1: <span id="score1">0</span></span>
+                    <span>SPIELER 2: <span id="score2">0</span></span>
+                </div>
 
+                <canvas id="pongCanvas" width="1800" height="900"></canvas>
+
+                <div class="controls-hint">
+                    <span>Spieler 1: [ W ] Oben / [ S ] Unten</span>
+                    <span>[ LEERTASTE ] Pause / Start</span>
+                    <span>Spieler 2: [ &uparrow; ] Oben / [ &downarrow; ] Unten</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
         const canvas = document.getElementById("pongCanvas");
-
         const ctx = canvas.getContext("2d");
- 
-        const paddleWidth = 10, paddleHeight = 75;
 
-        const ballRadius = 10;
+        // Game Metrics & State
+        const paddleWidth = 16, paddleHeight = 120;
+        const ballRadius = 12;
 
         let paddle1Y = (canvas.height - paddleHeight) / 2;
-
         let paddle2Y = (canvas.height - paddleHeight) / 2;
 
         let ballX = canvas.width / 2, ballY = canvas.height / 2;
+        let baseSpeed = 10;
+        let ballDX = baseSpeed, ballDY = -baseSpeed;
 
-        let ballDX = 8, ballDY = -8; // Increased speed
- 
-        document.addEventListener("keydown", keyDownHandler);
+        let score1 = 0, score2 = 0;
+        let isPaused = false;
 
-        document.addEventListener("keyup", keyUpHandler);
- 
+        // Key states
         let upPressed = false, downPressed = false;
-
         let wPressed = false, sPressed = false;
- 
+
+        // Smoke Particle Array
+        let particles = [];
+
+        // Keyboard Event Handlers
+        document.addEventListener("keydown", keyDownHandler);
+        document.addEventListener("keyup", keyUpHandler);
+
         function keyDownHandler(e) {
+            if (e.key === "ArrowUp") { upPressed = true; e.preventDefault(); }
+            if (e.key === "ArrowDown") { downPressed = true; e.preventDefault(); }
+            if (e.key.toLowerCase() === "w") wPressed = true;
+            if (e.key.toLowerCase() === "s") sPressed = true;
 
-            if (e.key == "ArrowUp") upPressed = true;
-
-            if (e.key == "ArrowDown") downPressed = true;
-
-            if (e.key == "w") wPressed = true;
-
-            if (e.key == "s") sPressed = true;
-
+            if (e.code === "Space") {
+                isPaused = !isPaused;
+                e.preventDefault();
+            }
         }
- 
+
         function keyUpHandler(e) {
-
-            if (e.key == "ArrowUp") upPressed = false;
-
-            if (e.key == "ArrowDown") downPressed = false;
-
-            if (e.key == "w") wPressed = false;
-
-            if (e.key == "s") sPressed = false;
-
+            if (e.key === "ArrowUp") upPressed = false;
+            if (e.key === "ArrowDown") downPressed = false;
+            if (e.key.toLowerCase() === "w") wPressed = false;
+            if (e.key.toLowerCase() === "s") sPressed = false;
         }
- 
-        function drawPaddle(x, y) {
 
-            ctx.beginPath();
+        // --- Smoke Particle System ---
+        function createSmokeEffect(x, y, isLeftPaddle) {
+            const particleCount = 35; // Number of smoke puffs
+            for (let i = 0; i < particleCount; i++) {
+                // Direction facing away from paddle
+                const spreadAngle = (Math.random() - 0.5) * Math.PI * 0.85;
+                const speed = Math.random() * 5 + 2;
+                const directionX = isLeftPaddle ? 1 : -1;
 
-            ctx.rect(x, y, paddleWidth, paddleHeight);
-
-            ctx.fillStyle = "#FFF";
-
-            ctx.fill();
-
-            ctx.closePath();
-
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(spreadAngle) * speed * directionX,
+                    vy: Math.sin(spreadAngle) * speed,
+                    size: Math.random() * 8 + 6,        // Initial particle radius
+                    growRate: Math.random() * 0.18 + 0.12, // Expansion over time
+                    alpha: 0.7,                         // Starting opacity
+                    decay: 0.7 / 120,                   // Fades out over 120 frames (~2 seconds at 60fps)
+                    life: 120                           // ~2 Seconds lifespan
+                });
+            }
         }
- 
+
+        function updateAndDrawParticles() {
+            for (let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vx *= 0.98; // Drag effect
+                p.vy *= 0.98;
+                p.size += p.growRate;
+                p.alpha -= p.decay;
+                p.life--;
+
+                if (p.life <= 0 || p.alpha <= 0) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                
+                // Neon-tinted smoke effect
+                ctx.fillStyle = `rgba(220, 220, 220, ${Math.max(0, p.alpha)})`;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = `rgba(255, 0, 255, ${Math.max(0, p.alpha * 0.6)})`;
+                
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // --- Rendering Functions ---
+        function drawPaddles() {
+            ctx.fillStyle = "#FFFFFF";
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#FF00FF";
+
+            // Left Paddle
+            ctx.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
+            // Right Paddle
+            ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
+            
+            ctx.shadowBlur = 0; // Reset shadow
+        }
+
         function drawBall() {
-
             ctx.beginPath();
-
             ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-
-            ctx.fillStyle = "#FFF";
-
+            ctx.fillStyle = "#FFFFFF";
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = "#FF00FF";
             ctx.fill();
-
             ctx.closePath();
-
+            ctx.shadowBlur = 0;
         }
- 
-        function draw() {
 
+        function drawNet() {
+            ctx.strokeStyle = "rgba(255, 0, 255, 0.25)";
+            ctx.lineWidth = 4;
+            ctx.setLineDash([15, 15]);
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+            ctx.setLineDash([]); // Reset line dash
+        }
+
+        // --- Main Game Loop ---
+        function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            drawPaddle(0, paddle1Y);
-
-            drawPaddle(canvas.width - paddleWidth, paddle2Y);
-
+            drawNet();
+            drawPaddles();
             drawBall();
- 
-            if (ballY + ballDY < ballRadius || ballY + ballDY > canvas.height - ballRadius) ballDY = -ballDY;
 
-            if (ballX + ballDX < ballRadius) {
+            // Render and update active smoke particles
+            updateAndDrawParticles();
 
-                if (ballY > paddle1Y && ballY < paddle1Y + paddleHeight) ballDX = -ballDX;
-
-                else resetBall();
-
-            } else if (ballX + ballDX > canvas.width - ballRadius) {
-
-                if (ballY > paddle2Y && ballY < paddle2Y + paddleHeight) ballDX = -ballDX;
-
-                else resetBall();
-
+            if (isPaused) {
+                ctx.fillStyle = "#FF00FF";
+                ctx.font = "bold 40px Consolas, monospace";
+                ctx.textAlign = "center";
+                ctx.fillText("PAUSE (Leertaste zum Fortsetzen)", canvas.width / 2, canvas.height / 2);
+                requestAnimationFrame(draw);
+                return;
             }
- 
+
+            // Wall Collision (Top / Bottom)
+            if (ballY + ballDY < ballRadius || ballY + ballDY > canvas.height - ballRadius) {
+                ballDY = -ballDY;
+            }
+
+            // Left Paddle Collision Check
+            if (ballX + ballDX - ballRadius <= paddleWidth) {
+                if (ballY >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
+                    ballDX = -ballDX * 1.03; // Slight speedup
+                    
+                    // Dynamic bounce angle based on hit location
+                    let hitPos = (ballY - (paddle1Y + paddleHeight / 2)) / (paddleHeight / 2);
+                    ballDY = hitPos * 10;
+
+                    // Trigger 2-second smoke explosion at collision point
+                    createSmokeEffect(paddleWidth, ballY, true);
+                } else if (ballX < 0) {
+                    score2++;
+                    document.getElementById("score2").innerText = score2;
+                    resetBall(1);
+                }
+            }
+
+            // Right Paddle Collision Check
+            if (ballX + ballDX + ballRadius >= canvas.width - paddleWidth) {
+                if (ballY >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
+                    ballDX = -ballDX * 1.03; // Slight speedup
+
+                    let hitPos = (ballY - (paddle2Y + paddleHeight / 2)) / (paddleHeight / 2);
+                    ballDY = hitPos * 10;
+
+                    // Trigger 2-second smoke explosion at collision point
+                    createSmokeEffect(canvas.width - paddleWidth, ballY, false);
+                } else if (ballX > canvas.width) {
+                    score1++;
+                    document.getElementById("score1").innerText = score1;
+                    resetBall(-1);
+                }
+            }
+
             ballX += ballDX;
-
             ballY += ballDY;
- 
-            if (wPressed && paddle1Y > 0) paddle1Y -= 7;
 
-            if (sPressed && paddle1Y < canvas.height - paddleHeight) paddle1Y += 7;
+            // Paddle Movement logic
+            const paddleSpeed = 10;
+            if (wPressed && paddle1Y > 0) paddle1Y -= paddleSpeed;
+            if (sPressed && paddle1Y < canvas.height - paddleHeight) paddle1Y += paddleSpeed;
 
-            if (upPressed && paddle2Y > 0) paddle2Y -= 7;
+            if (upPressed && paddle2Y > 0) paddle2Y -= paddleSpeed;
+            if (downPressed && paddle2Y < canvas.height - paddleHeight) paddle2Y += paddleSpeed;
 
-            if (downPressed && paddle2Y < canvas.height - paddleHeight) paddle2Y += 7;
- 
             requestAnimationFrame(draw);
-
         }
- 
-        function resetBall() {
 
+        function resetBall(direction) {
             ballX = canvas.width / 2;
-
             ballY = canvas.height / 2;
-
-            ballDX = -ballDX;
-
+            ballDX = baseSpeed * direction;
+            ballDY = (Math.random() > 0.5 ? 1 : -1) * baseSpeed;
         }
- 
+
+        // Theme Switcher Logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.body.classList.add('dark-mode');
+                updateThemeButton(true);
+            } else {
+                document.body.classList.remove('dark-mode');
+                updateThemeButton(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeButton(isDark);
+        }
+
+        function updateThemeButton(isDark) {
+            const btn = document.getElementById('themeToggle');
+            if (btn) btn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        }
+
+        document.addEventListener('DOMContentLoaded', initTheme);
+
+        // Start Game Loop
         draw();
-
-</script>
-
+    </script>
 </body>
-
 </html>
