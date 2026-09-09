@@ -1,9 +1,6 @@
 # /: 'https://z3l2a.github.io/',
     verweist auf 'https://github.com/z3l2a/z3l2a.github.io/'.
 
-# Upstream [GitHub]:'https://github.com/z3l2a/z3l2a.github.io/',
-    verweist auf den Root der Webseite.
-
 # PONG:'https://z3l2a.github.io/pong.html',
     verweist auf mein Pong-Spiel, das man mit 'W'&'S' sowie 'ARROW_UP'/'ARROW_DOWN' zu zweit auf einer Tastatur spielen kann.
 
@@ -18,3 +15,6 @@
 
 # TSW:'https://z3l2a.github.io/tsw.html',
     meine Enzyklopädie zu SWL&TSW, zwei Spielen.
+
+# Upstream [GitHub]:'https://github.com/z3l2a/z3l2a.github.io/',
+    verweist auf den Root der Webseite.
