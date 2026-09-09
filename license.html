@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>LICENSE — Z3l2A</title>
+    <title>TERMS — Z3l2A</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -116,7 +116,6 @@
             background-color: var(--accent-hover);
         }
 
-        /* Content Sections */
         h1 {
             font-size: 26px;
             border-bottom: 2px solid var(--accent-color);
@@ -210,10 +209,10 @@
             <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
             <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
             <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
-            <li><a href="https://z3l2a.github.io/license.html" class="active">TERMS / LICENSE</a></li>
+            <li><a href="https://z3l2a.github.io/license.html" class="active">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
-            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">Upstream [GitHub]</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -266,7 +265,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
     </div>
 
     <script>
-        // Theme Switcher Logic
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -291,7 +289,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             if (btn) btn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
         }
 
-        // Copy License Text Function
         function copyLicenseText(btnElement) {
             const licenseText = document.getElementById('licenseBox').innerText;
 

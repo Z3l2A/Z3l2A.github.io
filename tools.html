@@ -65,6 +65,15 @@
             padding: 10px 20px;
         }
 
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         nav a {
             color: var(--text-color);
             text-decoration: none;
@@ -74,7 +83,7 @@
             border-radius: 4px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--accent-color);
             color: #ffffff;
         }
@@ -109,7 +118,6 @@
             background-color: var(--accent-hover);
         }
 
-        /* Status Banner */
         .status-banner {
             background-color: var(--warning-bg);
             color: var(--warning-text);
@@ -120,7 +128,6 @@
             font-weight: 500;
         }
 
-        /* Main Content & Sections */
         h1 {
             font-size: 26px;
             border-bottom: 2px solid var(--accent-color);
@@ -145,7 +152,6 @@
             margin-bottom: 30px;
         }
 
-        /* Code Blocks & Inputs */
         pre {
             background-color: var(--code-bg);
             color: var(--code-text);
@@ -173,7 +179,6 @@
             resize: vertical;
         }
 
-        /* Lists */
         ul, ol {
             padding-left: 22px;
             margin-bottom: 15px;
@@ -195,18 +200,21 @@
             font-size: 0.9em;
             margin-top: 2px;
         }
-
-        .img-fluid {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body class="dark-mode">
 
+    <!-- Header Navigation -->
     <nav>
-        <a href="https://z3l2a.github.io/index.html">'go back to HOME /'</a>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html" class="active">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
+        </ul>
     </nav>
 
     <div class="container">
@@ -274,8 +282,6 @@ if __name__ == "__main__":
             <!-- Thema 3 -->
             <section class="topic-block">
                 <h2>3. Aller guten Dinge sind drei</h2>
-                <!-- Diagramm-Einbindung (Draw.io SVG): -->
-                <!-- <img class="img-fluid" src="https://z3l2a.github.io/root.drawio.svg" alt="Root Diagramm"> -->
                 <p>Inhalt & Diagramme folgen in Kürze.</p>
             </section>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>QR-Code & Base64 Tool — Z3l2A</title>
+    <title>QR & Base64 Tool — Z3l2A</title>
 
     <!-- External QR Libraries -->
     <script src="https://z3l2a.github.io/jsQR.js"></script>
@@ -82,7 +82,7 @@
             border-radius: 4px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--accent-color);
             color: #ffffff;
         }
@@ -142,7 +142,6 @@
             margin-bottom: 30px;
         }
 
-        /* Form Inputs & Controls */
         textarea, input[type="file"], button {
             width: 100%;
             font-size: 15px;
@@ -194,7 +193,6 @@
             margin-bottom: 8px;
         }
 
-        /* QR Display Area */
         #qrcode {
             margin: 20px 0;
             display: flex;
@@ -247,12 +245,13 @@
     <!-- Header Navigation -->
     <nav>
         <ul>
+            <li><a href="https://z3l2a.github.io/index.html" class="active">HOME</a></li>
             <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
             <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
             <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
-            <li><a href="https://github.com/z3l2a/z3l2a.github.io/" target="_blank" rel="noopener">Upstream [GitHub]</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -309,7 +308,6 @@
     </div>
 
     <script>
-        // Theme Switcher
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -336,7 +334,6 @@
 
         document.addEventListener('DOMContentLoaded', initTheme);
 
-        // Character Counters
         function updateCounter(inputElement, counterId, maxLength) {
             const currentLength = inputElement.value.length;
             const remaining = maxLength - currentLength;
@@ -351,7 +348,6 @@
             }
         }
 
-        // File Validation
         function validateTxtFile(input) {
             const file = input.files[0];
             if (file && !file.name.toLowerCase().endsWith('.txt')) {
@@ -361,7 +357,6 @@
             }
         }
 
-        // Generate QR Code
         function generateQRCode() {
             const fileInput = document.getElementById('fileInput').files[0];
             const textInput = document.getElementById('textInput').value;
@@ -400,7 +395,6 @@
             }
         }
 
-        // Download QR Code PNG
         function downloadQRCode() {
             const container = document.getElementById('qrcode');
             const img = container.querySelector('img');
@@ -424,7 +418,6 @@
             document.body.removeChild(downloadLink);
         }
 
-        // Decode QR Code Image
         function decodeQRCode() {
             const qrInput = document.getElementById('qrInput').files[0];
             if (!qrInput) {
@@ -455,7 +448,6 @@
             reader.readAsDataURL(qrInput);
         }
 
-        // Safe Base64 Decoder (Handles UTF-8 Characters)
         function decodeBase64() {
             const base64Input = document.getElementById('base64Input').value.trim();
             if (!base64Input) {
@@ -464,7 +456,6 @@
             }
 
             try {
-                // Unicode-safe Base64 decoding
                 const binaryString = atob(base64Input);
                 const bytes = Uint8Array.from(binaryString, char => char.charCodeAt(0));
                 const decodedData = new TextDecoder().decode(bytes);
@@ -474,7 +465,6 @@
             }
         }
 
-        // Copy to Clipboard with Button Feedback
         function copyToClipboard(elementId, btnElement) {
             const textarea = document.getElementById(elementId);
             if (!textarea || !textarea.value) {

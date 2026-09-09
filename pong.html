@@ -44,7 +44,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
@@ -84,13 +84,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 15px;
         }
 
         .header-logo {
-            max-height: 55px;
+            max-height: 60px;
             width: auto;
         }
 
@@ -109,7 +109,6 @@
             background-color: var(--accent-hover);
         }
 
-        /* Game Card & Canvas Container */
         .game-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -171,6 +170,7 @@
             <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -202,7 +202,6 @@
         const canvas = document.getElementById("pongCanvas");
         const ctx = canvas.getContext("2d");
 
-        // Game Metrics & State
         const paddleWidth = 16, paddleHeight = 120;
         const ballRadius = 12;
 
@@ -216,14 +215,11 @@
         let score1 = 0, score2 = 0;
         let isPaused = false;
 
-        // Key states
         let upPressed = false, downPressed = false;
         let wPressed = false, sPressed = false;
 
-        // Smoke Particle Array
         let particles = [];
 
-        // Keyboard Event Handlers
         document.addEventListener("keydown", keyDownHandler);
         document.addEventListener("keyup", keyUpHandler);
 
@@ -246,11 +242,9 @@
             if (e.key.toLowerCase() === "s") sPressed = false;
         }
 
-        // --- Smoke Particle System ---
         function createSmokeEffect(x, y, isLeftPaddle) {
-            const particleCount = 35; // Number of smoke puffs
+            const particleCount = 35;
             for (let i = 0; i < particleCount; i++) {
-                // Direction facing away from paddle
                 const spreadAngle = (Math.random() - 0.5) * Math.PI * 0.85;
                 const speed = Math.random() * 5 + 2;
                 const directionX = isLeftPaddle ? 1 : -1;
@@ -260,11 +254,11 @@
                     y: y,
                     vx: Math.cos(spreadAngle) * speed * directionX,
                     vy: Math.sin(spreadAngle) * speed,
-                    size: Math.random() * 8 + 6,        // Initial particle radius
-                    growRate: Math.random() * 0.18 + 0.12, // Expansion over time
-                    alpha: 0.7,                         // Starting opacity
-                    decay: 0.7 / 120,                   // Fades out over 120 frames (~2 seconds at 60fps)
-                    life: 120                           // ~2 Seconds lifespan
+                    size: Math.random() * 8 + 6,
+                    growRate: Math.random() * 0.18 + 0.12,
+                    alpha: 0.7,
+                    decay: 0.7 / 120,
+                    life: 120
                 });
             }
         }
@@ -274,7 +268,7 @@
                 let p = particles[i];
                 p.x += p.vx;
                 p.y += p.vy;
-                p.vx *= 0.98; // Drag effect
+                p.vx *= 0.98;
                 p.vy *= 0.98;
                 p.size += p.growRate;
                 p.alpha -= p.decay;
@@ -288,29 +282,21 @@
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                
-                // Neon-tinted smoke effect
                 ctx.fillStyle = `rgba(220, 220, 220, ${Math.max(0, p.alpha)})`;
                 ctx.shadowBlur = 12;
                 ctx.shadowColor = `rgba(255, 0, 255, ${Math.max(0, p.alpha * 0.6)})`;
-                
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        // --- Rendering Functions ---
         function drawPaddles() {
             ctx.fillStyle = "#FFFFFF";
             ctx.shadowBlur = 10;
             ctx.shadowColor = "#FF00FF";
-
-            // Left Paddle
             ctx.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
-            // Right Paddle
             ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
-            
-            ctx.shadowBlur = 0; // Reset shadow
+            ctx.shadowBlur = 0;
         }
 
         function drawBall() {
@@ -332,18 +318,15 @@
             ctx.moveTo(canvas.width / 2, 0);
             ctx.lineTo(canvas.width / 2, canvas.height);
             ctx.stroke();
-            ctx.setLineDash([]); // Reset line dash
+            ctx.setLineDash([]);
         }
 
-        // --- Main Game Loop ---
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             drawNet();
             drawPaddles();
             drawBall();
-
-            // Render and update active smoke particles
             updateAndDrawParticles();
 
             if (isPaused) {
@@ -355,21 +338,15 @@
                 return;
             }
 
-            // Wall Collision (Top / Bottom)
             if (ballY + ballDY < ballRadius || ballY + ballDY > canvas.height - ballRadius) {
                 ballDY = -ballDY;
             }
 
-            // Left Paddle Collision Check
             if (ballX + ballDX - ballRadius <= paddleWidth) {
                 if (ballY >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
-                    ballDX = -ballDX * 1.03; // Slight speedup
-                    
-                    // Dynamic bounce angle based on hit location
+                    ballDX = -ballDX * 1.03;
                     let hitPos = (ballY - (paddle1Y + paddleHeight / 2)) / (paddleHeight / 2);
                     ballDY = hitPos * 10;
-
-                    // Trigger 2-second smoke explosion at collision point
                     createSmokeEffect(paddleWidth, ballY, true);
                 } else if (ballX < 0) {
                     score2++;
@@ -378,15 +355,11 @@
                 }
             }
 
-            // Right Paddle Collision Check
             if (ballX + ballDX + ballRadius >= canvas.width - paddleWidth) {
                 if (ballY >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
-                    ballDX = -ballDX * 1.03; // Slight speedup
-
+                    ballDX = -ballDX * 1.03;
                     let hitPos = (ballY - (paddle2Y + paddleHeight / 2)) / (paddleHeight / 2);
                     ballDY = hitPos * 10;
-
-                    // Trigger 2-second smoke explosion at collision point
                     createSmokeEffect(canvas.width - paddleWidth, ballY, false);
                 } else if (ballX > canvas.width) {
                     score1++;
@@ -398,7 +371,6 @@
             ballX += ballDX;
             ballY += ballDY;
 
-            // Paddle Movement logic
             const paddleSpeed = 10;
             if (wPressed && paddle1Y > 0) paddle1Y -= paddleSpeed;
             if (sPressed && paddle1Y < canvas.height - paddleHeight) paddle1Y += paddleSpeed;
@@ -416,7 +388,6 @@
             ballDY = (Math.random() > 0.5 ? 1 : -1) * baseSpeed;
         }
 
-        // Theme Switcher Logic
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -442,8 +413,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', initTheme);
-
-        // Start Game Loop
         draw();
     </script>
 </body>

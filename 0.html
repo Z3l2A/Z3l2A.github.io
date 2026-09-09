@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>QR-Code & Base64 Tool — Z3l2A</title>
+    <title>QR & Base64 Tool — Z3l2A</title>
 
     <!-- External QR Libraries -->
     <script src="https://z3l2a.github.io/jsQR.js"></script>
@@ -82,7 +82,7 @@
             border-radius: 4px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--accent-color);
             color: #ffffff;
         }
@@ -142,7 +142,6 @@
             margin-bottom: 30px;
         }
 
-        /* Form Inputs & Controls */
         textarea, input[type="file"], button {
             width: 100%;
             font-size: 15px;
@@ -194,7 +193,6 @@
             margin-bottom: 8px;
         }
 
-        /* QR Display Area */
         #qrcode {
             margin: 20px 0;
             display: flex;
@@ -247,12 +245,13 @@
     <!-- Header Navigation -->
     <nav>
         <ul>
+            <li><a href="https://z3l2a.github.io/index.html" class="active">HOME</a></li>
             <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
             <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
             <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
-            <li><a href="https://github.com/z3l2a/z3l2a.github.io/" target="_blank" rel="noopener">Upstream [GitHub]</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -309,7 +308,6 @@
     </div>
 
     <script>
-        // Theme Switcher
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -336,7 +334,6 @@
 
         document.addEventListener('DOMContentLoaded', initTheme);
 
-        // Character Counters
         function updateCounter(inputElement, counterId, maxLength) {
             const currentLength = inputElement.value.length;
             const remaining = maxLength - currentLength;
@@ -351,7 +348,6 @@
             }
         }
 
-        // File Validation
         function validateTxtFile(input) {
             const file = input.files[0];
             if (file && !file.name.toLowerCase().endsWith('.txt')) {
@@ -361,7 +357,6 @@
             }
         }
 
-        // Generate QR Code
         function generateQRCode() {
             const fileInput = document.getElementById('fileInput').files[0];
             const textInput = document.getElementById('textInput').value;
@@ -400,7 +395,6 @@
             }
         }
 
-        // Download QR Code PNG
         function downloadQRCode() {
             const container = document.getElementById('qrcode');
             const img = container.querySelector('img');
@@ -424,7 +418,6 @@
             document.body.removeChild(downloadLink);
         }
 
-        // Decode QR Code Image
         function decodeQRCode() {
             const qrInput = document.getElementById('qrInput').files[0];
             if (!qrInput) {
@@ -455,7 +448,6 @@
             reader.readAsDataURL(qrInput);
         }
 
-        // Safe Base64 Decoder (Handles UTF-8 Characters)
         function decodeBase64() {
             const base64Input = document.getElementById('base64Input').value.trim();
             if (!base64Input) {
@@ -464,7 +456,6 @@
             }
 
             try {
-                // Unicode-safe Base64 decoding
                 const binaryString = atob(base64Input);
                 const bytes = Uint8Array.from(binaryString, char => char.charCodeAt(0));
                 const decodedData = new TextDecoder().decode(bytes);
@@ -474,7 +465,6 @@
             }
         }
 
-        // Copy to Clipboard with Button Feedback
         function copyToClipboard(elementId, btnElement) {
             const textarea = document.getElementById(elementId);
             if (!textarea || !textarea.value) {
@@ -501,15 +491,14 @@
         }
     </script>
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>LICENSE — Z3l2A</title>
+    <title>TERMS — Z3l2A</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -620,7 +609,6 @@
             background-color: var(--accent-hover);
         }
 
-        /* Content Sections */
         h1 {
             font-size: 26px;
             border-bottom: 2px solid var(--accent-color);
@@ -714,10 +702,10 @@
             <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
             <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
             <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
-            <li><a href="https://z3l2a.github.io/license.html" class="active">TERMS / LICENSE</a></li>
+            <li><a href="https://z3l2a.github.io/license.html" class="active">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
-            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">Upstream [GitHub]</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -770,7 +758,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
     </div>
 
     <script>
-        // Theme Switcher Logic
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -795,7 +782,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             if (btn) btn.innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
         }
 
-        // Copy License Text Function
         function copyLicenseText(btnElement) {
             const licenseText = document.getElementById('licenseBox').innerText;
 
@@ -818,8 +804,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         document.addEventListener('DOMContentLoaded', initTheme);
     </script>
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -865,7 +850,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 960px;
             margin: 0 auto;
         }
 
@@ -905,13 +890,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 15px;
         }
 
         .header-logo {
-            max-height: 55px;
+            max-height: 60px;
             width: auto;
         }
 
@@ -930,7 +915,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             background-color: var(--accent-hover);
         }
 
-        /* Game Card & Canvas Container */
         .game-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -992,6 +976,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
             <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
             <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
         </ul>
     </nav>
 
@@ -1023,7 +1008,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         const canvas = document.getElementById("pongCanvas");
         const ctx = canvas.getContext("2d");
 
-        // Game Metrics & State
         const paddleWidth = 16, paddleHeight = 120;
         const ballRadius = 12;
 
@@ -1037,14 +1021,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         let score1 = 0, score2 = 0;
         let isPaused = false;
 
-        // Key states
         let upPressed = false, downPressed = false;
         let wPressed = false, sPressed = false;
 
-        // Smoke Particle Array
         let particles = [];
 
-        // Keyboard Event Handlers
         document.addEventListener("keydown", keyDownHandler);
         document.addEventListener("keyup", keyUpHandler);
 
@@ -1067,11 +1048,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             if (e.key.toLowerCase() === "s") sPressed = false;
         }
 
-        // --- Smoke Particle System ---
         function createSmokeEffect(x, y, isLeftPaddle) {
-            const particleCount = 35; // Number of smoke puffs
+            const particleCount = 35;
             for (let i = 0; i < particleCount; i++) {
-                // Direction facing away from paddle
                 const spreadAngle = (Math.random() - 0.5) * Math.PI * 0.85;
                 const speed = Math.random() * 5 + 2;
                 const directionX = isLeftPaddle ? 1 : -1;
@@ -1081,11 +1060,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
                     y: y,
                     vx: Math.cos(spreadAngle) * speed * directionX,
                     vy: Math.sin(spreadAngle) * speed,
-                    size: Math.random() * 8 + 6,        // Initial particle radius
-                    growRate: Math.random() * 0.18 + 0.12, // Expansion over time
-                    alpha: 0.7,                         // Starting opacity
-                    decay: 0.7 / 120,                   // Fades out over 120 frames (~2 seconds at 60fps)
-                    life: 120                           // ~2 Seconds lifespan
+                    size: Math.random() * 8 + 6,
+                    growRate: Math.random() * 0.18 + 0.12,
+                    alpha: 0.7,
+                    decay: 0.7 / 120,
+                    life: 120
                 });
             }
         }
@@ -1095,7 +1074,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
                 let p = particles[i];
                 p.x += p.vx;
                 p.y += p.vy;
-                p.vx *= 0.98; // Drag effect
+                p.vx *= 0.98;
                 p.vy *= 0.98;
                 p.size += p.growRate;
                 p.alpha -= p.decay;
@@ -1109,29 +1088,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                
-                // Neon-tinted smoke effect
                 ctx.fillStyle = `rgba(220, 220, 220, ${Math.max(0, p.alpha)})`;
                 ctx.shadowBlur = 12;
                 ctx.shadowColor = `rgba(255, 0, 255, ${Math.max(0, p.alpha * 0.6)})`;
-                
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        // --- Rendering Functions ---
         function drawPaddles() {
             ctx.fillStyle = "#FFFFFF";
             ctx.shadowBlur = 10;
             ctx.shadowColor = "#FF00FF";
-
-            // Left Paddle
             ctx.fillRect(0, paddle1Y, paddleWidth, paddleHeight);
-            // Right Paddle
             ctx.fillRect(canvas.width - paddleWidth, paddle2Y, paddleWidth, paddleHeight);
-            
-            ctx.shadowBlur = 0; // Reset shadow
+            ctx.shadowBlur = 0;
         }
 
         function drawBall() {
@@ -1153,18 +1124,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             ctx.moveTo(canvas.width / 2, 0);
             ctx.lineTo(canvas.width / 2, canvas.height);
             ctx.stroke();
-            ctx.setLineDash([]); // Reset line dash
+            ctx.setLineDash([]);
         }
 
-        // --- Main Game Loop ---
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             drawNet();
             drawPaddles();
             drawBall();
-
-            // Render and update active smoke particles
             updateAndDrawParticles();
 
             if (isPaused) {
@@ -1176,21 +1144,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
                 return;
             }
 
-            // Wall Collision (Top / Bottom)
             if (ballY + ballDY < ballRadius || ballY + ballDY > canvas.height - ballRadius) {
                 ballDY = -ballDY;
             }
 
-            // Left Paddle Collision Check
             if (ballX + ballDX - ballRadius <= paddleWidth) {
                 if (ballY >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
-                    ballDX = -ballDX * 1.03; // Slight speedup
-                    
-                    // Dynamic bounce angle based on hit location
+                    ballDX = -ballDX * 1.03;
                     let hitPos = (ballY - (paddle1Y + paddleHeight / 2)) / (paddleHeight / 2);
                     ballDY = hitPos * 10;
-
-                    // Trigger 2-second smoke explosion at collision point
                     createSmokeEffect(paddleWidth, ballY, true);
                 } else if (ballX < 0) {
                     score2++;
@@ -1199,15 +1161,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
                 }
             }
 
-            // Right Paddle Collision Check
             if (ballX + ballDX + ballRadius >= canvas.width - paddleWidth) {
                 if (ballY >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
-                    ballDX = -ballDX * 1.03; // Slight speedup
-
+                    ballDX = -ballDX * 1.03;
                     let hitPos = (ballY - (paddle2Y + paddleHeight / 2)) / (paddleHeight / 2);
                     ballDY = hitPos * 10;
-
-                    // Trigger 2-second smoke explosion at collision point
                     createSmokeEffect(canvas.width - paddleWidth, ballY, false);
                 } else if (ballX > canvas.width) {
                     score1++;
@@ -1219,7 +1177,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             ballX += ballDX;
             ballY += ballDY;
 
-            // Paddle Movement logic
             const paddleSpeed = 10;
             if (wPressed && paddle1Y > 0) paddle1Y -= paddleSpeed;
             if (sPressed && paddle1Y < canvas.height - paddleHeight) paddle1Y += paddleSpeed;
@@ -1237,7 +1194,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             ballDY = (Math.random() > 0.5 ? 1 : -1) * baseSpeed;
         }
 
-        // Theme Switcher Logic
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1263,13 +1219,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         }
 
         document.addEventListener('DOMContentLoaded', initTheme);
-
-        // Start Game Loop
         draw();
     </script>
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1314,34 +1267,60 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             color: var(--text-color);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             font-size: 16px;
+            line-height: 1.6;
             margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         /* Navigation */
         nav {
             background-color: var(--nav-bg);
             border-bottom: 2px solid var(--accent-color);
-            padding: 12px 20px;
+            margin: -20px -20px 20px -20px;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         nav a {
             color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
+            display: inline-block;
             padding: 6px 12px;
             border-radius: 4px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--accent-color);
             color: #ffffff;
+        }
+
+        /* Header Bar */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-logo {
+            max-height: 60px;
+            width: auto;
         }
 
         #themeToggle {
@@ -1359,13 +1338,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             background-color: var(--accent-hover);
         }
 
-        /* Main Container & Terminal Card */
-        main {
-            flex: 1;
+        .terminal-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 0;
         }
 
         .card {
@@ -1452,29 +1429,43 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
 </head>
 <body class="dark-mode">
 
+    <!-- Header Navigation -->
     <nav>
-        <a href="https://z3l2a.github.io/index.html">'go back to HOME /'</a>
-        <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html" class="active">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
+        </ul>
     </nav>
 
-    <main>
-        <div class="card">
-            <h2>ENTER ACCESS CODE</h2>
-            <div class="input-group">
-                <input type="password" id="accessCode" placeholder="ACCESS CODE" autofocus autocomplete="off">
-                <button id="submitBtn" class="submit-btn">ENTER</button>
+    <div class="container">
+        <header class="header-bar">
+            <img class="header-logo" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Umbrella Corporation Logo">
+            <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
+        </header>
+
+        <main class="terminal-wrapper">
+            <div class="card">
+                <h2>ENTER ACCESS CODE</h2>
+                <div class="input-group">
+                    <input type="password" id="accessCode" placeholder="ACCESS CODE" autofocus autocomplete="off">
+                    <button id="submitBtn" class="submit-btn">ENTER</button>
+                </div>
+                <p id="errorMsg" class="error">ACCESS DENIED!</p>
             </div>
-            <p id="errorMsg" class="error">ACCESS DENIED!</p>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <script>
-        // Mapping access codes (stored in uppercase for case-insensitive matching)
         const accessRoutes = {
             "0": "about:blank",
             "CV": "https://1drv.ms/w/c/ac5cc98241a40a0e/IQCd8xI8ffmnSbO-9jKd05pkAW_xsUEMzRFe1YVsyVJVIlg",
             "INDEX": "https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/index.html",
-            "LICENSE": "https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/LICENSE.html",
+            "LICENSE": "https://github.com/Z3l2A/Z3l2A.github.io/edit/Z3l2A.github.io/license.html",
             "LINKEDIN": "https://www.linkedin.com/in/vincentgaertner/",
             "MAIL": "mailto:VincentGaertner@outlook.de",
             "..": "https://z3l2a.github.io/index.html",
@@ -1512,12 +1503,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             }
         });
 
-        // Clear error message when user starts typing again
         inputField.addEventListener("input", function() {
             errorMsg.style.display = "none";
         });
 
-        // Theme Switcher Logic
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -1545,8 +1534,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
         document.addEventListener('DOMContentLoaded', initTheme);
     </script>
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -1613,6 +1601,15 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             padding: 10px 20px;
         }
 
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
         nav a {
             color: var(--text-color);
             text-decoration: none;
@@ -1622,7 +1619,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             border-radius: 4px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             background-color: var(--accent-color);
             color: #ffffff;
         }
@@ -1657,7 +1654,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             background-color: var(--accent-hover);
         }
 
-        /* Status Banner */
         .status-banner {
             background-color: var(--warning-bg);
             color: var(--warning-text);
@@ -1668,7 +1664,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             font-weight: 500;
         }
 
-        /* Main Content & Sections */
         h1 {
             font-size: 26px;
             border-bottom: 2px solid var(--accent-color);
@@ -1693,7 +1688,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             margin-bottom: 30px;
         }
 
-        /* Code Blocks & Inputs */
         pre {
             background-color: var(--code-bg);
             color: var(--code-text);
@@ -1721,7 +1715,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             resize: vertical;
         }
 
-        /* Lists */
         ul, ol {
             padding-left: 22px;
             margin-bottom: 15px;
@@ -1743,18 +1736,21 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</pre>
             font-size: 0.9em;
             margin-top: 2px;
         }
-
-        .img-fluid {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body class="dark-mode">
 
+    <!-- Header Navigation -->
     <nav>
-        <a href="https://z3l2a.github.io/index.html">'go back to HOME /'</a>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html" class="active">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
+        </ul>
     </nav>
 
     <div class="container">
@@ -1822,8 +1818,6 @@ if __name__ == "__main__":
             <!-- Thema 3 -->
             <section class="topic-block">
                 <h2>3. Aller guten Dinge sind drei</h2>
-                <!-- Diagramm-Einbindung (Draw.io SVG): -->
-                <!-- <img class="img-fluid" src="https://z3l2a.github.io/root.drawio.svg" alt="Root Diagramm"> -->
                 <p>Inhalt & Diagramme folgen in Kürze.</p>
             </section>
 
@@ -1912,15 +1906,14 @@ if __name__ == "__main__":
         document.addEventListener('DOMContentLoaded', initTheme);
     </script>
 </body>
-</html>
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>The TSWpedia; Collections & Guidelines</title>
+    <title>TSWpedia — Z3l2A</title>
     <style>
         :root {
             --bg-color: #ffffff;
@@ -1968,20 +1961,50 @@ if __name__ == "__main__":
             margin: 0 auto;
         }
 
-        /* Header & Navigation */
-        header {
+        /* Navigation */
+        nav {
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--accent-color);
+            margin: -20px -20px 20px -20px;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Header Bar */
+        .header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        h1 {
-            font-size: 26px;
-            margin: 0;
-            color: var(--text-color);
+        .header-logo {
+            max-height: 60px;
+            width: auto;
         }
 
         #themeToggle {
@@ -1999,7 +2022,14 @@ if __name__ == "__main__":
             background-color: var(--accent-hover);
         }
 
-        /* Content Sections */
+        h1 {
+            font-size: 26px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 6px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
         .topic-block {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -2041,7 +2071,6 @@ if __name__ == "__main__":
             text-decoration: underline;
         }
 
-        /* ASCII Art */
         .ascii-art {
             font-family: monospace;
             white-space: pre;
@@ -2050,7 +2079,6 @@ if __name__ == "__main__":
             margin-bottom: 20px;
         }
 
-        /* Code & Preformatted Text */
         pre {
             background-color: var(--code-bg);
             color: var(--code-text);
@@ -2088,7 +2116,6 @@ if __name__ == "__main__":
             margin: 15px 0;
         }
 
-        /* Attachments Grid */
         .attachments-section {
             margin-top: 40px;
             border-top: 2px solid var(--accent-color);
@@ -2123,19 +2150,30 @@ if __name__ == "__main__":
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
 
+    <!-- Header Navigation -->
     <nav>
-        <a href="https://z3l2a.github.io/index.html">'go back to HOME /'</a>
+        <ul>
+            <li><a href="https://z3l2a.github.io/index.html">HOME</a></li>
+            <li><a href="https://z3l2a.github.io/pong.html">PONG</a></li>
+            <li><a href="https://z3l2a.github.io/terminal.html">TERMINAL</a></li>
+            <li><a href="https://z3l2a.github.io/license.html">TERMS</a></li>
+            <li><a href="https://z3l2a.github.io/tools.html">TOOLS</a></li>
+            <li><a href="https://z3l2a.github.io/tsw.html" class="active">TSW</a></li>
+            <li><a href="https://github.com/Z3l2A/Z3l2A.github.io/" target="_blank" rel="noopener">UPSTREAM</a></li>
+        </ul>
     </nav>
 
     <div class="container">
-        <header>
-            <h1>The TSWpedia — Collections & Guidelines</h1>
-            <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        <header class="header-bar">
+            <img class="header-logo" src="https://z3l2a.github.io/Umbrella_Corporation.svg" alt="Umbrella Corporation Logo">
+            <button id="themeToggle" onclick="toggleTheme()">☀️ Light Mode</button>
         </header>
 
-        <main class="post-body">
+        <main>
+            <h1>The TSWpedia — Collections & Guidelines</h1>
+
             <!-- ASCII Greeting -->
             <pre class="ascii-art">
 ヾ(≧▽xl*)o
@@ -2328,7 +2366,6 @@ C:\...\Flash\ClickableNametags\Modules.xml</code></pre>
     </div>
 
     <script>
-        // Theme Switcher Functionality
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -2337,6 +2374,7 @@ C:\...\Flash\ClickableNametags\Modules.xml</code></pre>
                 document.body.classList.add('dark-mode');
                 updateThemeButton(true);
             } else {
+                document.body.classList.remove('dark-mode');
                 updateThemeButton(false);
             }
         }
