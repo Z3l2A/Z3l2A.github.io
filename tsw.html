@@ -1,162 +1,414 @@
 <!DOCTYPE html>
-<html lang="de_DE">
+<html lang="de">
 <head>
-    <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="ocs-site-verification" content="ba9c3ee6ab1613351182e9a1558fa6ae">
     <link rel="icon" href="https://z3l2a.github.io/favicon.ico" sizes="any">
-    <title>The TSWpedia; collections & guidelines</title>
+    <title>The TSWpedia; Collections & Guidelines</title>
     <style>
         :root {
-            --bg-color: #FFFFFF;
-            --text-color: #000000;
-            --input-bg: #FFFFFF;
-            --input-readonly-bg: #FFFFFF;
-            --accent-color: #FF00FF;
-            --accent-hover: #FF00FF;
-            --copy-btn-bg: #FFFFFF;
-            --copy-btn-hover: #FF00FF;
-            --download-btn-bg: #FFFFFF;
-            --download-btn-hover: #FF00FF;
-            --nav-bg: #F0F0F0;
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --card-bg: #f8f9fa;
+            --input-bg: #ffffff;
+            --accent-color: #d600d6;
+            --accent-hover: #b000b0;
+            --border-color: #e0e0e0;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+            --nav-bg: #f0f0f0;
         }
 
         body.dark-mode {
-            --bg-color: #000000;
-            --text-color: #FFFFFF;
-            --input-bg: #000000;
-            --input-readonly-bg: #000000;
-            --accent-color: #FF00FF;
-            --accent-hover: #FF00FF;
-            --copy-btn-bg: #000000;
-            --copy-btn-hover: #FF00FF;
-            --download-btn-bg: #000000;
-            --download-btn-hover: #FF00FF;
-            --nav-bg: #000000;
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --input-bg: #2a2a2a;
+            --accent-color: #ff00ff;
+            --accent-hover: #d600d6;
+            --border-color: #333333;
+            --code-bg: #000000;
+            --code-text: #00ff66;
+            --nav-bg: #1e1e1e;
         }
 
         * {
             box-sizing: border-box;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: sans-serif;
-            font-size: 18px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            accent-color: var(--accent-color);
         }
 
-        /* Navigation */
-        nav ul {
-            list-style-type: none;
-            margin: -20px -20px 20px -20px;
-            padding: 0;
-            overflow: hidden;
-            background-color: var(--nav-bg);
-            border-bottom: 2px solid var(--accent-color);
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
         }
 
-        nav li {
-            float: left;
-        }
-
-        nav li a {
-            display: block;
-            color: var(--text-color);
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav li a:hover {
-            background-color: var(--accent-color);
-            color: #FFFFFF;
-        }
-
-        .header-bar {
+        /* Header & Navigation */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin: 0;
+            color: var(--text-color);
         }
 
         #themeToggle {
-            width: auto;
-            padding: 8px 16px;
-            font-size: 16px;
-            margin: 0;
-        }
-
-        ::selection {
             background-color: var(--accent-color);
-            color: #FFFFFF;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
-        /* Überschriften & Text */
-        h1 {
-            font-size: 28px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
+        #themeToggle:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Content Sections */
+        .topic-block {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
         }
 
         h2 {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--accent-color);
-            margin-top: 25px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 17px;
+            margin-top: 20px;
             margin-bottom: 10px;
         }
 
         p, li {
-            line-height: 1.6;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-        .topic-block {
-            margin-bottom: 35px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed var(--accent-color);
+        ul {
+            padding-left: 20px;
         }
 
-        textarea, input[type="file"], button {
-            width: 100%;
-            font-size: 18px;
-            background-color: var(--input-bg);
-            color: var(--text-color);
-            border: 2px solid var(--accent-color);
-            padding: 10px;
-            margin-top: 8px;
-            margin-bottom: 8px;
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ASCII Art */
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.2;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Code & Preformatted Text */
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 12px;
             border-radius: 4px;
+            overflow-x: auto;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            font-size: 14px;
         }
 
-        button {
-            background-color: var(--accent-color);
-            color: #FFFFFF;
-            font-weight: bold;
-            cursor: pointer;
+        code {
+            background-color: rgba(255, 0, 255, 0.1);
+            color: var(--accent-color);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            font-size: 0.9em;
         }
 
-        button:hover {
-            background-color: var(--accent-hover);
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
         }
 
-        .fit-picture {
+        del {
+            opacity: 0.6;
+        }
+
+        .img-fluid {
             max-width: 100%;
             height: auto;
-            display: block;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            margin: 15px 0;
+        }
+
+        /* Attachments Grid */
+        .attachments-section {
+            margin-top: 40px;
+            border-top: 2px solid var(--accent-color);
+            padding-top: 20px;
+        }
+
+        .attachments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .attachment-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .attachment-title {
+            font-weight: bold;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .attachment-meta {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>The TSWpedia — Collections & Guidelines</h1>
+            <button id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
+        </header>
+
+        <main class="post-body">
+            <!-- ASCII Greeting -->
+            <pre class="ascii-art">
+ヾ(≧▽xl*)o
+..... (¯`v´¯)♥
+.......•.¸.•´
+....¸.•´
+... (
+ ☻/
+ /▌♥♥
+ / \ ♥♥
+            </pre>
+
+            <!-- Topic 1 -->
+            <section class="topic-block" id="topic-1">
+                <h2>1. Main Menu & Options XML Tweaks</h2>
+                <p>Edit <code>C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.xml</code>:</p>
+                <pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;
+&lt;!-- $Change: 600955 $ (must be within the first 200 characters of the file) --&gt;
+
+&lt;Root fadein_duration="0"
+      fadeout_duration="0"
+      viewslide_duration="0"
+      viewfade_duration="0"
+      alpha="0" /&gt;</code></pre>
+                <p>Set the file to <strong>Read-Only</strong>.</p>
+                <p>Then delete: <code>C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.bxml</code></p>
+                
+                <p>Next, edit <code>C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Options.xml</code>:</p>
+                <p>Search for the line containing <code>gmlevel="-1"</code> and remove that attribute so it looks like this:</p>
+                <pre><code class="language-xml">&lt;OptionSubGroup title="&lt;localized token=MainMenu_Options_Debug /&gt;"&gt;</code></pre>
+                <p>Set the file to <strong>Read-Only</strong>, then delete <code>Options.bxml</code> in the same folder.</p>
+                <p><em>Note: The <code>.bxml</code> files are generated automatically after <code>.xml</code> files are read. Deleting them forces the game to regenerate them with your custom XML edits.</em></p>
+            </section>
+
+            <!-- Topic 2 -->
+            <section class="topic-block" id="topic-2">
+                <h2>2. Compatibility Settings & DirectX 11 Crash Fix</h2>
+                <p>The primary executable that requires compatibility settings is <code>ClientPatcher.exe</code>. If launching via a shortcut, configure these settings on the shortcut properties as well:</p>
+                <ul>
+                    <li>Right-click <code>ClientPatcher.exe</code> &rarr; <em>Send to &rarr; Desktop (create shortcut)</em></li>
+                    <li>Right-click desktop shortcut &rarr; <em>Properties</em></li>
+                    <li>Advanced &rarr; Check <strong>Run as administrator</strong></li>
+                    <li>Set Run to <strong>Maximized</strong></li>
+                    <li>Go to <em>Compatibility</em> tab &rarr; Click <strong>Change settings for all users</strong></li>
+                </ul>
+                <p><em>Note: If starting via Steam or another wrapper (e.g. <code>PatcherSetup.exe</code>), compatibility options must be set there too. When started via <code>ClientPatcher.exe</code>, compatibility modes transfer directly to <code>SecretWorldLegends.exe</code> / <code>SecretWorldLegendsDX11.exe</code>.</em></p>
+
+                <h3>Fixing DX11 Crash Issues</h3>
+                <p>Apply <strong>Properties &rarr; Compatibility</strong> settings to the patcher executables (bold paths below):</p>
+                <ul>
+                    <li><strong><code>C:\Program Files (x86)\Funcom\Secret World Legends\ClientPatcher.exe</code></strong></li>
+                    <li><del><code>C:\Program Files (x86)\Funcom\Secret World Legends\PatcherSetup.exe</code></del></li>
+                    <li><del><code>C:\Program Files (x86)\Funcom\Secret World Legends\SecretWorldLegends.exe</code></del></li>
+                    <li><del><code>C:\Program Files (x86)\Funcom\Secret World Legends\SecretWorldLegendsDX11.exe</code></del></li>
+                    <li><strong><code>C:\Program Files (x86)\Funcom\The Secret World\ClientPatcher.exe</code></strong></li>
+                    <li><del><code>C:\Program Files (x86)\Funcom\The Secret World\TheSecretWorld.exe</code></del></li>
+                    <li><del><code>C:\Program Files (x86)\Funcom\The Secret World\TheSecretWorldDX11.exe</code></del></li>
+                </ul>
+                <img src="https://forums.omnedatumoptimum.red/a/IGPvqS0nh1P9AmLHln7eovski9VSlOe0uFVS4f4Gm2AlrPpG7qr2hu6WoQF9W387/486/" alt="Compatibility Mode Setup" class="img-fluid">
+            </section>
+
+            <!-- Topic 3 -->
+            <section class="topic-block" id="topic-3">
+                <h2>3. Resources, Websites & Modding Guide</h2>
+
+                <h3>Tools & Archives</h3>
+                <ul>
+                    <li><strong>NVIDIA Profile Inspector:</strong> Developer tool superior to standard NVIDIA Control Panel.</li>
+                    <li><strong>MajorGeeks Windows Tweaks:</strong> <a href="https://www.majorgeeks.com/files/details/majorgeeks_registry_tweaks.html" target="_blank" rel="noopener">MajorGeeks Registry Tweaks</a></li>
+                    <li><strong>FiveAliveTeamGUI:</strong> Mod showing combat targeting upon hovering over team frames.</li>
+                    <li><strong>GuildListPerformanceFix:</strong> Community fix for VFE Friendlist crashes.</li>
+                </ul>
+
+                <h3>Community Websites & Guides</h3>
+                <ul>
+                    <li><a href="https://www.curseforge.com/tsw/tsw-mods" target="_blank" rel="noopener">TSW Mods on CurseForge</a></li>
+                    <li><a href="https://www.curseforge.com/swlegends/tswl-mods" target="_blank" rel="noopener">SWL Mods on CurseForge</a></li>
+                    <li><strong>FatherDuffy's Fight Club:</strong> <a href="https://fdfc.info" target="_blank" rel="noopener">fdfc.info</a></li>
+                    <li><strong>Agent Network Guide:</strong> <a href="https://www.tswdb.com/agent-network/agent-network-master-guide" target="_blank" rel="noopener">TSWDB Agent Guide</a></li>
+                    <li><strong>Agents Spreadsheet:</strong> <a href="https://docs.google.com/spreadsheets/d/1dyVfabthDrR67g5zzsm5jI4GlAT2edMTnvezmdc0DFw" target="_blank" rel="noopener">Google Sheets Agent Overview</a></li>
+                    <li><strong>Beginner Guide:</strong> <a href="https://www.tswdb.com/miscellaneous/the-ultimate-beginner-guide/" target="_blank" rel="noopener">Ultimate Beginner Guide</a></li>
+                    <li><strong>Champions List:</strong> <a href="https://www.tswdb.com/miscellaneous/champions/champion-list" target="_blank" rel="noopener">Champion Roster</a></li>
+                    <li><strong>Chat Commands:</strong> <a href="http://legacy.tswdb.com/miscellaneous/chat-commands" target="_blank" rel="noopener">TSWDB Commands</a></li>
+                    <li><strong>Gear & Theorycrafting:</strong> <a href="https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI" target="_blank" rel="noopener">Theorycrafting Spreadsheet</a></li>
+                    <li><strong>SWL Market:</strong> <a href="https://swlmarket.azurewebsites.net" target="_blank" rel="noopener">Market Tracker</a></li>
+                    <li><strong>Leaderboards:</strong> <a href="https://leaderboards.secretworldlegends.com" target="_blank" rel="noopener">Official Leaderboards</a></li>
+                    <li><strong>Subreddit:</strong> <a href="https://www.reddit.com/r/SecretWorldLegends/" target="_blank" rel="noopener">r/SecretWorldLegends</a></li>
+                    <li><strong>Tanking Guide (Legacy):</strong> <a href="https://www.reddit.com/comments/6obo4h" target="_blank" rel="noopener">Reddit Tanking Guide</a></li>
+                </ul>
+
+                <h3>In-Game Modding Instructions</h3>
+                <p>Mods must be extracted into single unnested folders inside:</p>
+                <p><code>C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash</code></p>
+                <p><em>Example Structure for "Clickable Nametags":</em></p>
+                <pre><code>C:\...\Flash\ClickableNametags\CharPrefs.bxml
+C:\...\Flash\ClickableNametags\CharPrefs.xml
+C:\...\Flash\ClickableNametags\ClickableNametags.swf
+C:\...\Flash\ClickableNametags\Modules.bxml
+C:\...\Flash\ClickableNametags\Modules.xml</code></pre>
+                <p><strong>Important:</strong> Ensure mod files reside directly inside a single subfolder under <code>Flash/</code>. Do not leave double-nested directories from zip archives.</p>
+                <p><em>Mod customization tip:</em> In <strong>Meeehrpack</strong>, removing <code>AutoPet.swf</code> leaves <code>AutoSprint.swf</code> functional while avoiding pet summons glitches.</p>
+
+                <h3>Personal Recommended Mods</h3>
+                <ul>
+                    <li><a href="https://swl.curseforge.com/projects/agenttweaks" target="_blank" rel="noopener">AgentTweaks</a></li>
+                    <li><a href="https://swl.curseforge.com/projects/clickablenametags" target="_blank" rel="noopener">ClickableNametags</a></li>
+                    <li><a href="https://swl.curseforge.com/projects/empowerment-helper" target="_blank" rel="noopener">EmpowermentHelper</a></li>
+                    <li><a href="https://tsw.curseforge.com/projects/swl-meeehrpack" target="_blank" rel="noopener">Meeehrpack</a></li>
+                    <li><a href="https://tsw.curseforge.com/projects/vfe" target="_blank" rel="noopener">Valyrie's Friends Enhanced (VFE)</a></li>
+                </ul>
+
+                <h3>Useful Hardware & Utility Links</h3>
+                <ul>
+                    <li><a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener">7-Zip Archiver</a></li>
+                    <li><a href="https://pcgamingwiki.com/wiki/Nvidia_Profile_Inspector" target="_blank" rel="noopener">Nvidia Profile Inspector (PCGW)</a></li>
+                    <li><a href="https://reshade.me" target="_blank" rel="noopener">ReShade Post-Processing</a></li>
+                    <li><a href="https://forums.funcom.com/t/in-memory-of-keeperoftime/46438" target="_blank" rel="noopener">In Memory of KeeperOfTime</a></li>
+                </ul>
+            </section>
+
+            <!-- Topic 4 -->
+            <section class="topic-block" id="topic-4">
+                <h2>4. Console Commands & System Configurations</h2>
+
+                <h3>Useful Console Commands</h3>
+                <pre><code>/chat join Sanctuary
+/setoption ScreenBrightness 1
+/setoption ScreenContrast 1.25
+/setoption ScreenGamma 1
+/setoption RenderSetting_ViewDistance -1
+/setoption SplashScreenFadeInTime 0
+/setoption SplashScreenFadeOutTime 0
+/reloadui</code></pre>
+                <p><em>Tip: Run <code>/setoption ScreenBrightness</code> without a value to query the current setting.</em></p>
+
+                <h3>Gear Manager Shortcuts</h3>
+                <pre><code>/setoption chat_macro_window 1
+/setoption web_browser 1
+/gearmanager list
+/gearmanager use [NAME]
+/gearmanager save [NAME]</code></pre>
+
+                <h3>Windows Defender Exclusion Fix</h3>
+                <p>To avoid false positives from Defender during updates, exclude your main installation directory in Windows Settings (<code>Win + I</code> &rarr; <em>Update & Security &rarr; Windows Security &rarr; Virus & threat protection &rarr; Manage settings &rarr; Exclusions</em>):</p>
+                <ul>
+                    <li><code>C:\Program Files (x86)\Funcom</code></li>
+                    <li><code>C:\Program Files (x86)\Steam\steamapps\common</code> (or custom library folder e.g. <code>D:\SteamLibrary</code>)</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Attachments Section -->
+        <section class="attachments-section">
+            <h2>Attached Files & Download Mirror</h2>
+            <div class="attachments-grid">
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/set_Compatability_Mode.png">set_Compatability_Mode.png</a></span>
+                    <span class="attachment-meta">PNG, 151 KB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/MajorGeeksWindowsTweaks2_96.zip">MajorGeeksWindowsTweaks2_96.zip</a></span>
+                    <span class="attachment-meta">ZIP, 2.43 MB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/WaypointsRepacked.zip">WaypointsRepacked.zip</a></span>
+                    <span class="attachment-meta">ZIP, 60.9 KB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/MMC_msc.zip">MMC_msc.zip</a></span>
+                    <span class="attachment-meta">ZIP, 754 KB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/Window.zip">Window.zip</a></span>
+                    <span class="attachment-meta">ZIP, 402 Bytes</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/Options.zip">Options.zip</a></span>
+                    <span class="attachment-meta">ZIP, 76.1 KB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/FiveAliveTeamGUI.zip">FiveAliveTeamGUI.zip</a></span>
+                    <span class="attachment-meta">ZIP, 434 KB</span>
+                </div>
+                <div class="attachment-card">
+                    <span class="attachment-title"><a href="https://z3l2a.github.io/NVIDIAProfileInspector.zip">NVIDIAProfileInspector.zip</a></span>
+                    <span class="attachment-meta">ZIP, 3.53 MB</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script>
-        // Dark Mode Logik
+        // Theme Switcher Functionality
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -182,5 +434,5 @@
 
         document.addEventListener('DOMContentLoaded', initTheme);
     </script>
- <div class="post-body"><article class="misago-markup"><p>ヾ(≧▽≦*)o</p><p>..... (¯`v´¯)♥<br> .......•.¸.•´<br> ....¸.•´<br> ... (<br> ☻/<br> /▌♥♥<br> / \ ♥♥</p><p><strong>&lt;topic_1&gt;</strong><br> edit "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.xml"</p><p>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;<br> &lt;!-- $Change: 600955 $ (must be within the first 200 characters of the file) --&gt;</p><p>&lt;Root fadein_duration = "0"<br> fadeout_duration = "0"<br> viewslide_duration = "0"<br> viewfade_duration = "0"<br> alpha = "0"<br> /&gt;</p><p>and make the file read-only.</p><p>then delete "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Window.bxml"<br> edit "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Options.xml"<br> search for the line "gmlevel=-1" and remove it so the line becomes<br> &lt;OptionSubGroup title="&lt;localized token=MainMenu_Options_Debug /&gt;"&gt;<br> and make it read-only<br> then delete "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Default\Views\MainMenu\Options.bxml"<br> (the .bxml files are generated after the .xml files are read. That's why, after the edit it is good to let it actualize it directly. At least many of the edits I did in the .xml only took place after I deleted the .bxml file of the same name before the extension-type. So, that might be the reason why!)<br> <strong>&lt;/topic_1&gt;</strong></p><p><strong>&lt;topic_2&gt;</strong></p><h2>The only application needed to set to the compatability-mode settings listed below is ClientPatcher.exe,</h2><p>unless you're starting it from a shortcut then on it's file properties those must be set too for being safe:<br> Rightclick on "ClientPatcher.exe"<br> Click Send To and Create shortcut (to desktop)<br> Rightclick on it there and open Properties<br> Set Advanced =&gt; "Run as administrator"<br> Set Run: "Maximized"<br> Click on Apply<br> stay there<br> Go to Compatability tab rightern of the opn Shortcut tab.<br> CHANGE SETTINGS FOR ALL USERS<br> It's absolutely required that the game gets initialized/started by using then either the shortcut or the <strong>ClientPatcher.exe</strong> itself.<br> If you're starting it from <strong>Steam</strong>, or an other <strong>.exe</strong> like <strong>PatcherSetup.exe</strong>, then it won't work unless you set there the settings too.<br> If you initialize SWL by <strong>ClientPatcher.exe</strong>, all settings of compatability-mode and such will be taken-over to the starting <strong>SecretWorldLegends.exe</strong> / <strong>SecretWorldLegendsDX11.exe</strong> -, that is why!<br> ...</p><h2>++ How to fix DX11-crashing! ++</h2><p><strong>Rightclick</strong> on the applications mentioned:<br> <strong>Rightclick</strong> =&gt; <strong>Properties</strong> =&gt; <strong>Compatability</strong>...<br> <strong>"C:\Program Files (x86)\Funcom\Secret World Legends\ClientPatcher.exe"</strong><br> <del>"C:\Program Files (x86)\Funcom\Secret World Legends\PatcherSetup.exe"</del><br> <del>"C:\Program Files (x86)\Funcom\Secret World Legends\SecretWorldLegends.exe"</del><br> <del>"C:\Program Files (x86)\Funcom\Secret World Legends\SecretWorldLegendsDX11.exe"</del><br> <strong>"C:\Program Files (x86)\Funcom\The Secret World\ClientPatcher.exe"</strong><br> <del>"C:\Program Files (x86)\Funcom\The Secret World\TheSecretWorld.exe"</del><br> <del>"C:\Program Files (x86)\Funcom\The Secret World\TheSecretWorldDX11.exe"</del><br><img alt="set_Compatability_Mode.png" src="https://forums.omnedatumoptimum.red/a/IGPvqS0nh1P9AmLHln7eovski9VSlOe0uFVS4f4Gm2AlrPpG7qr2hu6WoQF9W387/486/" style="pointer-events: all !important;"><br> <strong>&lt;/topic_2&gt;</strong></p><p><strong>&lt;topic_3&gt;</strong><br> <strong>NVIDIA -Profile- Inspector.7z</strong> is the NVIDIA Developer Tool -, superior to the common NVIDIA console.<br> <strong>MajorGeeks Windows Tweaks.7z</strong> is <a href="https://www.majorgeeks.com/files/details/majorgeeks_registry_tweaks.html" rel="nofollow">www.majorgeeks.com/files/details/majorgeeks_registry_tweaks.html</a><br> <strong>MMC.7z</strong> is the following picture...<br> <strong>FiveAliveTeamGUI.7z</strong> is the mentioned mod for making combat show who gets attacked and target team members just by moving the cursor onto the team window member.<br> <strong>GuildListPerformanceFix.7z</strong> is the mentioned mod from the community for VFE Friendlist Crash-Fix.<br> <a href="https://www.curseforge.com/tsw/tsw-mods" rel="nofollow">www.curseforge.com/tsw/tsw-mods</a><br> <a href="https://www.curseforge.com/swlegends/tswl-mods" rel="nofollow">www.curseforge.com/swlegends/tswl-mods</a><br> <strong>FatherDuffy'sFightClub</strong> - <a href="https://fdfc.info" rel="nofollow">fdfc.info</a><br> <strong>SWLAgentNetworkExplained</strong> - <a href="https://www.tswdb.com/agent-network/agent-network-master-guide" rel="nofollow">www.tswdb.com/agent-network/agent-network-master-guide</a><br> <strong>SWLAgentsSpreadsheet</strong> - <a href="https://docs.google.com/spreadsheets/d/1dyVfabthDrR67g5zzsm5jI4GlAT2edMTnvezmdc0DFw" rel="nofollow">docs.google.com/spreadsheets/d/1dyVfabthDrR67g5zzsm5jI4GlAT2edMTnvezmdc0DFw</a><br> <strong>SWLBeginnerGuide</strong> - <a href="https://www.tswdb.com/miscellaneous/the-ultimate-beginner-guide/" rel="nofollow">www.tswdb.com/miscellaneous/the-ultimate-beginner-guide/</a><br> <strong>SWLChampions</strong> - <a href="https://www.tswdb.com/miscellaneous/champions/champion-list" rel="nofollow">www.tswdb.com/miscellaneous/champions/champion-list</a><br> <strong>SWLCommands</strong> - <a href="http://legacy.tswdb.com/miscellaneous/chat-commands" rel="nofollow">legacy.tswdb.com/miscellaneous/chat-commands</a><br> <strong>SWLDatabase</strong> - <a href="https://www.tswdb.com" rel="nofollow">www.tswdb.com</a><br> <strong>SWLGear&amp;Theorycrafting</strong> - <a href="https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI" rel="nofollow">docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI</a><br> <strong>SWLMarket</strong> - <a href="https://swlmarket.azurewebsites.net" rel="nofollow">swlmarket.azurewebsites.net</a><br> <strong>SWLLeaderbords</strong> - <a href="https://leaderboards.secretworldlegends.com" rel="nofollow">leaderboards.secretworldlegends.com</a><br> <strong>SWLLegends</strong> - <a href="https://www.tswdb.com/legends/" rel="nofollow">www.tswdb.com/legends/</a><br> <strong>SWLLegends</strong> - <a href="https://wiki.crygaia.org/view/Category:Legends" rel="nofollow">wiki.crygaia.org/view/Category:Legends</a><br> <strong>SWLMuseum</strong> - <a href="https://www.tswdb.com/miscellaneous/museum-of-the-occult/museum-of-the-occult-master-guide" rel="nofollow">www.tswdb.com/miscellaneous/museum-of-the-occult/museum-of-the-occult-master-guide</a><br> <strong>SWLScripts</strong> - <a href="http://legacy.tswdb.com/miscellaneous/chat-scripts" rel="nofollow">legacy.tswdb.com/miscellaneous/chat-scripts</a><br> <strong>SWLReddit</strong> - <a href="https://www.reddit.com/r/SecretWorldLegends/" rel="nofollow">www.reddit.com/r/SecretWorldLegends/</a><br> <strong>The Orochi Group</strong> - <a href="http://orochi-group.com" rel="nofollow">orochi-group.com</a><br> <strong>TSWDatabase</strong> - <a href="http://legacy.tswdb.com" rel="nofollow">legacy.tswdb.com</a><br> <strong>TSWHowToTank</strong> - <a href="https://www.reddit.com/comments/6obo4h" rel="nofollow">www.reddit.com/comments/6obo4h</a> ~ PLEASE BE WARNED: This tanking thread contains what the tanking-role was before the patch that just happened. I will let it stay here with a TSW-flag (huh?) and put it later in some sort of Legacy-store</p><h2>InGame modding..., the dedicated mySWL! :O</h2><p>... mods must be put as unpacked folders with ONLY the files of the mod inside into:<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash"<br> ... for example:<br> if it's the mod "CLICKABLE NAMETAGS" then install it this way...<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash\ClickableNametags\CharPrefs.bxml"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash\ClickableNametags\CharPrefs.xml"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash\ClickableNametags\ClickableNametags.swf"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash\ClickableNametags\Modules.bxml"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\Data\Gui\Custom\Flash\ClickableNametags\Modules.xml"<br> ... In the downloaded package of clickable nametags was just a folder with those five files, but if the folder was into a folder and then the five files were inside... then DONT copy it this way into the Flash folder. It must ALWAYS be ONE FOLDER with FILES DIRECTLY INSIDE. Yes, there's mod authors that pack a folder into the zipped/packed folder in where the folder is a new folder with the files..., silly. Won't make the mod work.<br> Additionally, be aware that it is possible to edit the files. The mod Meeehrpack has <strong>AutoSprint.swf</strong> and <strong>AutoPet.swf</strong> inside... if you DELETE or... simply take the <strong>AutoPet.swf</strong> out of the mod and just put the other files into the Flash Meeehrpack folder, <strong>AutoSprint.swf</strong> will work coz it is inside but <strong>AutoPet.swf</strong> will not be used. I personally recommend removing/deleting <strong>AutoPet.swf</strong> coz it likes to make trouble or annoyance sometimes.</p><h2>Personal recommendations:</h2><p><strong>AgentTweaks</strong> - <a href="https://swl.curseforge.com/projects/agenttweaks" rel="nofollow">swl.curseforge.com/projects/agenttweaks</a><br> <strong>ClickableNametags</strong> - <a href="https://swl.curseforge.com/projects/clickablenametags" rel="nofollow">swl.curseforge.com/projects/clickablenametags</a><br> <strong>EmpowermentHelper</strong> - <a href="https://swl.curseforge.com/projects/empowerment-helper" rel="nofollow">swl.curseforge.com/projects/empowerment-helper</a><br> <strong>Meeehrpack</strong> - <a href="https://tsw.curseforge.com/projects/swl-meeehrpack" rel="nofollow">tsw.curseforge.com/projects/swl-meeehrpack</a><br> <strong>Valyrie'sFriendsEnhanced</strong> - <a href="https://tsw.curseforge.com/projects/vfe" rel="nofollow">tsw.curseforge.com/projects/vfe</a></p><h2>Furthermore, appreciated by the community:</h2><p><strong>AgentSwitcher</strong> - <a href="https://github.com/SecretFox/AgentSwitcher/releases" rel="nofollow">github.com/SecretFox/AgentSwitcher/releases</a><br> <strong>AgentViewer</strong> - <a href="https://swl.curseforge.com/projects/agentviewer" rel="nofollow">swl.curseforge.com/projects/agentviewer</a><br> <strong>AutoRepair</strong> - <a href="https://swl.curseforge.com/projects/auto-repair" rel="nofollow">swl.curseforge.com/projects/auto-repair</a><br> <strong>Don'tMakeMeWait</strong> - <a href="https://www.curseforge.com/tsw/tsw-mods/dont-make-me-wait" rel="nofollow">www.curseforge.com/tsw/tsw-mods/dont-make-me-wait</a><br> <strong>EffectsUI</strong> - <a href="https://www.curseforge.com/swlegends/tswl-mods/swl-effects-ui-legends" rel="nofollow">www.curseforge.com/swlegends/tswl-mods/swl-effects-ui-legends</a><br> <strong>LairTracker</strong> - <a href="https://www.curseforge.com/swlegends/tswl-mods/lairtracker" rel="nofollow">www.curseforge.com/swlegends/tswl-mods/lairtracker</a><br> <strong>Lorehound</strong> - <a href="https://swl.curseforge.com/projects/lorehound" rel="nofollow">swl.curseforge.com/projects/lorehound</a><br> <strong>MobMarkers</strong> - <a href="https://swl.curseforge.com/projects/mobmarkers" rel="nofollow">swl.curseforge.com/projects/mobmarkers</a><br> <strong>Personal Space Soon</strong> - <a href="https://github.com/theckhd/ALIA/releases" rel="nofollow">github.com/theckhd/ALIA/releases</a><br> <strong>SWLact</strong> - <a href="https://swl.curseforge.com/projects/tswact" rel="nofollow">swl.curseforge.com/projects/tswact</a> # <a href="https://advancedcombattracker.com/download.php" rel="nofollow">advancedcombattracker.com/download.php</a><br> <strong>SWLLassie'sWaypoints</strong> - <a href="https://www.curseforge.com/swlegends/tswl-mods/lassies-waypoints" rel="nofollow">www.curseforge.com/swlegends/tswl-mods/lassies-waypoints</a><br> <strong>TradepostUtility</strong> - <a href="https://swl.curseforge.com/projects/tradepost-utility" rel="nofollow">swl.curseforge.com/projects/tradepost-utility</a><br> <strong>TSW lairs essence creation tool</strong> - <a href="http://tsw.nex4k.net/lairs" rel="nofollow">tsw.nex4k.net/lairs</a></p><h2>Experimental section..., ... any misconfiguration can eradicate your soft- &amp;/or hardware. ò.ó</h2><p><strong>Commands_GUI_Guide</strong> - <a href="https://guidescroll.com/2012/07/the-secret-world-chat-commands-and-gui-guide/" rel="nofollow">guidescroll.com/2012/07/the-secret-world-chat-commands-and-gui-guide/</a><br> <strong>7zip</strong> - <a href="https://www.7-zip.org/download.html" rel="nofollow">www.7-zip.org/download.html</a><br> <strong>AAexplained</strong> - <a href="https://www.tomshardware.com/reviews/anti-aliasing-nvidia-geforce-amd-radeon,2868.html" rel="nofollow">www.tomshardware.com/reviews/anti-aliasing-nvidia-geforce-amd-radeon,2868.html</a><br> <strong>BCDEDITpcisettings</strong> - <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set" rel="nofollow">docs.microsoft.com/en-us/windows-hardware/drivers/devtest/bcdedit--set</a><br> <strong>directx_Jun2010_redist</strong> - <a href="https://www.microsoft.com/en-us/download/details.aspx?id=8109" rel="nofollow">www.microsoft.com/en-us/download/details.aspx?id=8109</a><br> <strong>ExplainingComputers</strong> - <a href="https://www.youtube.com/user/ExplainingComputers" rel="nofollow">www.youtube.com/user/ExplainingComputers</a> / <a href="https://www.explainingcomputers.com/" rel="nofollow">www.explainingcomputers.com/</a><br> <strong>Firmware&amp;Maintenance</strong> - <a href="https://www.station-drivers.com" rel="nofollow">www.station-drivers.com</a><br> <strong>LinusTechTips</strong> - <a href="https://www.youtube.com/user/LinusTechTips" rel="nofollow">www.youtube.com/user/LinusTechTips</a><br> <strong>NVIDIAdriverQuery</strong> - <a href="https://www.nvidia.de/Download/Find.aspx?lang=en" rel="nofollow">www.nvidia.de/Download/Find.aspx?lang=en</a><br> <strong>NvidiaProfileInspector</strong> - <a href="https://pcgamingwiki.com/wiki/Nvidia_Profile_Inspector" rel="nofollow">pcgamingwiki.com/wiki/Nvidia_Profile_Inspector</a><br> <strong>Pastebin</strong> - <a href="https://pastebin.com/u/Nilt" rel="nofollow">pastebin.com/u/Nilt</a><br> <strong>pciLookup</strong> - <a href="https://www.pcilookup.com" rel="nofollow">www.pcilookup.com</a><br> <strong>PostProcessAA</strong> - <a href="https://reshade.me" rel="nofollow">reshade.me</a><br> <strong>Techquickie</strong> - <a href="https://www.youtube.com/channel/UC0vBXGSyV14uvJ4hECDOl0Q" rel="nofollow">www.youtube.com/channel/UC0vBXGSyV14uvJ4hECDOl0Q</a><br> ~ in loving memory of <strong>KeeperOfTime</strong> <a href="https://forums.funcom.com/t/in-memory-of-keeperoftime/46438" rel="nofollow">forums.funcom.com/t/in-memory-of-keeperoftime/46438</a><br> <strong>&lt;/topic_3&gt;</strong></p><p><strong>&lt;topic_4&gt;</strong></p><h2>The following section contains on-going edits.</h2><p><a href="https://nvidia.custhelp.com/app/answers/detail/a_id/2227/~/will-running-physx-on-a-gpu-slow-down-gaming-performance%3F" rel="nofollow">nvidia.custhelp.com/app/answers/detail/a_id/2227/~/will-running-physx-on-a-gpu-slow-down-gaming-performance%3F</a><br> "/chat join Sanctuary" "/chat beitreten Sanctuary" "/chat jouer... ? Sanctuary" and explaining the VFE-fix. Furthermore, Chat Fonts maybe but uhm... shortcuts CTRL + SHIFT + F1, the reload of text by ON/OFF channel and probably TaskManager Priority High, Discord High Priority / Overlay / Hardware Acceleration differences and impact of Reduced Motion and Sync To Computer... i already see it's too much for today. Yeah.<br> how do you copy the chat?<br> /setoption ScreenBrightness 1<br> /setoption ScreenContrast 1<br> /setoption ScreenGamma 1<br> /setoption RenderSetting_ViewDistance -1<br> /chat join Event<br> /chat join Sanctuary<br> /reloadui<br> /(set)option(einstellen) ScreenContrast 1.25 eliminates graytones/fog<br> /(set)option(einstellen) RenderSetting_ViewDistance -1 enhances depth-clarity... pictures will be shown soon. It can only be reverted by ... well, for sure a SWL restart. IDC right now.<br> /(set)option(einstellen) SplashScreenFadeInTime 0 ... tis the teleportation UI fade in time... means: how fast you see NOT ONLY YOUR REALTIME VIDEO... uhm... when you press CTRL + Y or CTRL + Z you see the video without ui... yes... how fast this goes active when you zone. The Opposite is to the Fade Out time. I recommend both at 0, work great. It lags shortly. Some say the lag is gone if it is 0.025 or 0.25 as DON'T MAKE ME WAIT MOD do, but... ... i don't care. Try yourself. Too unfocussed now to check. This is a sudden changelog. To be checked.<br> /(set)option(einstellen) SplashScreenFadeOutTime 0<br> WHAT IS MY CURRENT VALUE?<br> INPUT<br> command without value to see it.<br> /setoption ScreenBrightness<br> [05:28] Variable &lt;ScreenBrightness&gt; is &lt;0.500000&gt;<br> "C:\Program Files (x86)\Funcom\Secret World Legends\scripts"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\scripts\auto_login"<br> "C:\Program Files (x86)\Funcom\Secret World Legends\scripts\auto_teleport"<br> <a href="https://docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI/edit#gid=0" rel="nofollow">docs.google.com/spreadsheets/d/1HVgBeFTbXH0eZ5dJVtzXXm6HyITMHLUyM8avntoPOSI/edit#gid=0</a><br> <a href="https://lomsglobal.com/threads/starfoxs-mod-repository.2517/" rel="nofollow">lomsglobal.com/threads/starfoxs-mod-repository.2517/</a></p><h2>! =&gt; This fixes Windows Defender fake-alert</h2><p>mentioned in <a href="https://forums.funcom.com/t/trojan-horse-virus-found-in-swl-patch-from-steam-and-during-installation-using-install-file-from-swl-website/156537/36" rel="nofollow">forums.funcom.com/t/trojan-horse-virus-found-in-swl-patch-from-steam-and-during-installation-using-install-file-from-swl-website/156537/36</a> but it's up to you how much you want to exclude.<br> Just for fixing the game exclude your Funcom folder e.g. "C:\Program Files (x86)\Funcom" or if you use <strong>Steam</strong> your "C:\Program Files (x86)\Steam\steamapps\common" folder, OR if using an extern disk the <strong>SteamLibrary</strong> folder there e.g. "D:\SteamLibrary".<br> Press<br> <strong>Win + i</strong><br> to open your Windows 10 Settings..., then:<br> <a href="https://github.com/spf13/viper" rel="nofollow">github.com/spf13/viper</a><br> Viper's "They Come And Go"</p><p><a href="https://www.curseforge.com/swlegends/tswl-mods/untold-stories-of-the-secret-world" rel="nofollow">www.curseforge.com/swlegends/tswl-mods/untold-stories-of-the-secret-world</a><br> Untold Stories of The Secret World</p><p><a href="https://www.curseforge.com/tsw/tsw-mods/eltorqiro_uitweaks" rel="nofollow">www.curseforge.com/tsw/tsw-mods/eltorqiro_uitweaks</a><br> ElTorqiro_UITweaks</p><p>&amp; some more:</p><p>TSW-mods (partially/full compatible)<br> <a href="https://www.curseforge.com/tsw/search?class=tsw-mods&amp;page=1&amp;pageSize=50&amp;sortBy=latest+update" rel="nofollow">www.curseforge.com/tsw/search?class=tsw-mods&amp;page=1&amp;pageSize=50&amp;sortBy=latest+update</a></p><p>SWL-mods (partially/full compatible)<br> <a href="https://www.curseforge.com/swlegends/search?class=tswl-mods&amp;page=1&amp;pageSize=50&amp;sortBy=latest+update" rel="nofollow">www.curseforge.com/swlegends/search?class=tswl-mods&amp;page=1&amp;pageSize=50&amp;sortBy=latest+update</a></p><p>SWL-installer<br> <a href="http://cdn.funcom.com/downloads/swl/client/SecretWorldLegends.exe" rel="nofollow">cdn.funcom.com/downloads/swl/client/SecretWorldLegends.exe</a><br> TSW-installer<br> <a href="http://cdn.funcom.com/downloads/tsw/client/TheSecretWorldInstaller.exe" rel="nofollow">cdn.funcom.com/downloads/tsw/client/TheSecretWorldInstaller.exe</a></p><p>/setoption chat_macro_window 1<br> /setoption web_browser 1<br> /gearmanager list<br> /gearmanager use NAME<br> /gearmanager save NAME<br> <strong>&lt;/topic_4&gt;</strong></p></article></div><div class="post-attachments"><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a class="post-thumbnail" href="https://forums.omnedatumoptimum.red/a/IGPvqS0nh1P9AmLHln7eovski9VSlOe0uFVS4f4Gm2AlrPpG7qr2hu6WoQF9W387/486/" style="background-image: url(&quot;/a/thumb/IGPvqS0nh1P9AmLHln7eovski9VSlOe0uFVS4f4Gm2AlrPpG7qr2hu6WoQF9W387/486/&quot;);"></a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/IGPvqS0nh1P9AmLHln7eovski9VSlOe0uFVS4f4Gm2AlrPpG7qr2hu6WoQF9W387/486/" class="attachment-name item-title">set_Compatability_Mode.png</a><p class="post-attachment-description">PNG, 151.3 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="August 28, 2026 3:32 PM">7 days ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/0DR8MxKd6uiTCl5NXZuJ41uMjQRhz5xMypXJXHYauOPjVjU1UfkyWzbNoKd496Nj/484/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/0DR8MxKd6uiTCl5NXZuJ41uMjQRhz5xMypXJXHYauOPjVjU1UfkyWzbNoKd496Nj/484/" class="attachment-name item-title">MajorGeeks Windows Tweaks 2.96.zip</a><p class="post-attachment-description">ZIP, 2.4 MB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 2, 2024 12:50 PM">3 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/ww6L6fxk7ijrCxRELDL9IEB405eUBkM1oswjFqZS1Hk4FoidbSXFBmk04ShgW7dl/478/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/ww6L6fxk7ijrCxRELDL9IEB405eUBkM1oswjFqZS1Hk4FoidbSXFBmk04ShgW7dl/478/" class="attachment-name item-title">WaypointsRepacked.zip</a><p class="post-attachment-description">ZIP, 60.9 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="December 25, 2021 3:18 AM">5 years ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/EhLXehYy3nf6hfEkFKK4oZDILgRvXWo7u6NEkZI2JCTLFYgNfSkdbdLnZFIVac37/475/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/EhLXehYy3nf6hfEkFKK4oZDILgRvXWo7u6NEkZI2JCTLFYgNfSkdbdLnZFIVac37/475/" class="attachment-name item-title">ZeraMMC.7z</a><p class="post-attachment-description">7z, 72.4 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="October 23, 2021 12:02 AM">5 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/DGroExy95kvZtvcETNDVGhELIFXipfQxxT5vDoY1uiKnVIUgDazYCxrjmqAeaaoG/468/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/DGroExy95kvZtvcETNDVGhELIFXipfQxxT5vDoY1uiKnVIUgDazYCxrjmqAeaaoG/468/" class="attachment-name item-title">Window.xml</a><p class="post-attachment-description">xml, 284.0 B, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="October 9, 2021 10:53 PM">5 years ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/E1IQG6vBZlOKkO2nKNW5rVkOeAbYSTTX2JotkGv5nArEWTwXeAv96KOuous0quZ7/467/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/E1IQG6vBZlOKkO2nKNW5rVkOeAbYSTTX2JotkGv5nArEWTwXeAv96KOuous0quZ7/467/" class="attachment-name item-title">Options.xml</a><p class="post-attachment-description">xml, 76.0 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="October 9, 2021 10:53 PM">5 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/DSxmk2I2tH3oHlg6SVgBZSR6t7MwdXcoRbmuKIx9QaGx2kpLvS9GWsK2aPJlCEZq/440/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/DSxmk2I2tH3oHlg6SVgBZSR6t7MwdXcoRbmuKIx9QaGx2kpLvS9GWsK2aPJlCEZq/440/" class="attachment-name item-title">SWL LocalConfigXML.7z</a><p class="post-attachment-description">7z, 456.0 B, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 22, 2021 12:48 AM">6 years ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/sIRvo6DVwMPdPikC8Z5JnpnxN2f9Y4TXjPKIAW9U2pV0MsoArlCYygJ6Y2AoVoPG/439/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/sIRvo6DVwMPdPikC8Z5JnpnxN2f9Y4TXjPKIAW9U2pV0MsoArlCYygJ6Y2AoVoPG/439/" class="attachment-name item-title">TSW LocalConfigXML.7z</a><p class="post-attachment-description">7z, 437.0 B, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 22, 2021 12:48 AM">6 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/svNVRCgpW9OjzZni5gvOJK9HMrmssbOZpVdwIZjzSX7twht0ZVeK99JBSXTf97RX/438/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/svNVRCgpW9OjzZni5gvOJK9HMrmssbOZpVdwIZjzSX7twht0ZVeK99JBSXTf97RX/438/" class="attachment-name item-title">GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}.7z</a><p class="post-attachment-description">7z, 170.0 B, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 22, 2021 12:46 AM">6 years ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/Iy6LZ0CvW7sAVHrn7bpJcNmepAc0Q46Mjyjv0cudjZuJibeTLWEpfwSMMtEBcXov/432/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/Iy6LZ0CvW7sAVHrn7bpJcNmepAc0Q46Mjyjv0cudjZuJibeTLWEpfwSMMtEBcXov/432/" class="attachment-name item-title">FiveAliveTeamGUI.7z</a><p class="post-attachment-description">7z, 433.5 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 20, 2021 2:25 AM">6 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/3W5ysZQNkRBA6WWsaC2qr4h2ILgOpNAlvM5hugEHjdaXV1zyIArdYhcegn6PkMiN/430/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/3W5ysZQNkRBA6WWsaC2qr4h2ILgOpNAlvM5hugEHjdaXV1zyIArdYhcegn6PkMiN/430/" class="attachment-name item-title">NVIDIA -Profile- Inspector.7z</a><p class="post-attachment-description">7z, 288.9 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 20, 2021 2:23 AM">6 years ago</abbr>.</p></div></div><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/OEj2Yg0jZGZFE2CkCMA94EiOzAcGhhSxPDlU4VPYSEmP5B8TCaMzkOMHYsGv1Vvl/419/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/OEj2Yg0jZGZFE2CkCMA94EiOzAcGhhSxPDlU4VPYSEmP5B8TCaMzkOMHYsGv1Vvl/419/" class="attachment-name item-title">GuildListPerformanceFix.7z</a><p class="post-attachment-description">7z, 6.5 KB, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 20, 2021 1:50 AM">6 years ago</abbr>.</p></div></div></div><div class="row"><div class="col-xs-12 col-md-6"><div class="post-attachment-preview"><a href="https://forums.omnedatumoptimum.red/a/WtDrIQcITTfFOzfG7a35rvTPLIUoAhni5KkqUeyaJQ95hXyZ2oPBWg3UH1uVofEo/418/" class="material-icon">insert_drive_file</a></div><div class="post-attachment"><a href="https://forums.omnedatumoptimum.red/a/WtDrIQcITTfFOzfG7a35rvTPLIUoAhni5KkqUeyaJQ95hXyZ2oPBWg3UH1uVofEo/418/" class="attachment-name item-title">ShowSecondsInSystemClock.7z</a><p class="post-attachment-description">7z, 310.0 B, uploaded by <a href="https://forums.omnedatumoptimum.red/u/zerachilde/609/" class="item-title">Zerachilde</a> <abbr title="February 20, 2021 1:43 AM">6 years ago</abbr>.</p></div></div></div></div><br></body>
 </body>
+</html>
