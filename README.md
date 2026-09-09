@@ -1,7 +1,7 @@
 # /: 'https://z3l2a.github.io/',
     verweist auf 'https://github.com/z3l2a/z3l2a.github.io/'.
 
-# GITHUB:'https://github.com/z3l2a/z3l2a.github.io/',
+# Upstream [GitHub]:'https://github.com/z3l2a/z3l2a.github.io/',
     verweist auf den Root der Webseite.
 
 # PONG:'https://z3l2a.github.io/pong.html',
@@ -10,7 +10,7 @@
 # TERMINAL:'https://z3l2a.github.io/terminal.html',
     ein "VARIABLE=WERT"=="EINGABE=REDIRECT" basierendes Tool.
 
-# TERMS:'https://z3l2a.github.io/LICENSE.md',
+# TERMS:'https://z3l2a.github.io/license.html',
     meine Lizenz.
 
 # TOOLS:'https://z3l2a.github.io/tools.html',
