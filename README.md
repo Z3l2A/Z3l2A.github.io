@@ -1,20 +1,8 @@
-# /: 'https://z3l2a.github.io/',
-    verweist auf 'https://github.com/z3l2a/z3l2a.github.io/'.
+[
 
-# PONG:'https://z3l2a.github.io/pong.html',
-    verweist auf mein Pong-Spiel, das man mit 'W'&'S' sowie 'ARROW_UP'/'ARROW_DOWN' zu zweit auf einer Tastatur spielen kann.
+https://github.com/user-attachments/assets/10d91eba-dcbb-4234-b1cd-cf2ff110fbe0
 
-# TERMINAL:'https://z3l2a.github.io/terminal.html',
-    ein "VARIABLE=WERT"=="EINGABE=REDIRECT" basierendes Tool.
+]
 
-# TERMS:'https://z3l2a.github.io/license.html',
-    meine Lizenz.
-
-# TOOLS:'https://z3l2a.github.io/tools.html',
-    meine Skript-Sammlung, an der ich noch arbeite.
-
-# TSW:'https://z3l2a.github.io/tsw.html',
-    meine Enzyklopädie zu SWL&TSW, zwei Spielen.
-
-# Upstream [GitHub]:'https://github.com/z3l2a/z3l2a.github.io/',
-    verweist auf den Root der Webseite.
+<iframe width="1920" height="1080" src="https://github.com/user-attachments/assets/10d91eba-dcbb-4234-b1cd-cf2ff110fbe0
+" title="You&#39;re Worrying About the Wrong Thing | AI State of The Union" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
