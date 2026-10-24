@@ -1,3 +1,1 @@
-[
-https://github.com/user-attachments/assets/10d91eba-dcbb-4234-b1cd-cf2ff110fbe0
-]
+Quirky visionary engineer uses brilliant unorthodox, socially immature tactics and obsessions to accomplish unprecedented engineering feats.
